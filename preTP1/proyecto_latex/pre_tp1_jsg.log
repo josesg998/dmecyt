@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.9.10)  12 SEP 2023 00:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.9.10)  12 SEP 2023 22:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -565,56 +565,53 @@ uario/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}]
 File: ./imagenes//1_ejemplos_flores.png Graphic file (type png)
 <use ./imagenes//1_ejemplos_flores.png>
 Package pdftex.def Info: ./imagenes//1_ejemplos_flores.png  used on input line 
-75.
+77.
 (pdftex.def)             Requested size: 397.48499pt x 165.62201pt.
 <./imagenes//2_brillo.png, id=68, 867.24pt x 361.35pt>
 File: ./imagenes//2_brillo.png Graphic file (type png)
 <use ./imagenes//2_brillo.png>
-Package pdftex.def Info: ./imagenes//2_brillo.png  used on input line 87.
+Package pdftex.def Info: ./imagenes//2_brillo.png  used on input line 94.
 (pdftex.def)             Requested size: 397.48499pt x 165.62201pt.
-<./imagenes//3_binario.png, id=69, 361.35pt x 361.35pt>
+<./imagenes//3_binario.png, id=69, 867.24pt x 361.35pt>
 File: ./imagenes//3_binario.png Graphic file (type png)
 <use ./imagenes//3_binario.png>
-Package pdftex.def Info: ./imagenes//3_binario.png  used on input line 97.
-(pdftex.def)             Requested size: 119.2467pt x 119.24586pt.
+Package pdftex.def Info: ./imagenes//3_binario.png  used on input line 104.
+(pdftex.def)             Requested size: 298.11374pt x 124.21376pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4416) has occurred while \output is active []
 
  [2 <./imagenes//1_ejemplos_flores.png> <./imagenes//2_brillo.png>]
 <./imagenes//4_recortado.png, id=78, 462.528pt x 346.896pt>
 File: ./imagenes//4_recortado.png Graphic file (type png)
 <use ./imagenes//4_recortado.png>
-Package pdftex.def Info: ./imagenes//4_recortado.png  used on input line 108.
+Package pdftex.def Info: ./imagenes//4_recortado.png  used on input line 120.
 (pdftex.def)             Requested size: 119.2467pt x 89.4339pt.
 <./imagenes//5_mezcla.png, id=79, 867.24pt x 361.35pt>
 File: ./imagenes//5_mezcla.png Graphic file (type png)
 <use ./imagenes//5_mezcla.png>
-Package pdftex.def Info: ./imagenes//5_mezcla.png  used on input line 118.
+Package pdftex.def Info: ./imagenes//5_mezcla.png  used on input line 130.
 (pdftex.def)             Requested size: 298.11374pt x 124.21376pt.
-
-Underfull \vbox (badness 4036) has occurred while \output is active []
-
- [3 <./imagenes//3_binario.png> <./imagenes//4_recortado.png> <./imagenes//5_me
-zcla.png>]
-<./imagenes//6_filtro.png, id=90, 867.24pt x 361.35pt>
+<./imagenes//6_filtro.png, id=80, 867.24pt x 361.35pt>
 File: ./imagenes//6_filtro.png Graphic file (type png)
 <use ./imagenes//6_filtro.png>
-Package pdftex.def Info: ./imagenes//6_filtro.png  used on input line 130.
+Package pdftex.def Info: ./imagenes//6_filtro.png  used on input line 144.
 (pdftex.def)             Requested size: 397.48499pt x 165.62201pt.
+ [3 <./imagenes//3_binario.png> <./imagenes//4_recortado.png> <./imagenes//5_me
+zcla.png>]
 <./imagenes//7_1_promedio.png, id=91, 867.24pt x 361.35pt>
 File: ./imagenes//7_1_promedio.png Graphic file (type png)
 <use ./imagenes//7_1_promedio.png>
-Package pdftex.def Info: ./imagenes//7_1_promedio.png  used on input line 142.
+Package pdftex.def Info: ./imagenes//7_1_promedio.png  used on input line 168.
 (pdftex.def)             Requested size: 278.23827pt x 115.9321pt.
 <./imagenes//7_2_promedio_especies_color.png, id=92, 433.62pt x 433.62pt>
 File: ./imagenes//7_2_promedio_especies_color.png Graphic file (type png)
 <use ./imagenes//7_2_promedio_especies_color.png>
 Package pdftex.def Info: ./imagenes//7_2_promedio_especies_color.png  used on i
-nput line 149.
+nput line 175.
 (pdftex.def)             Requested size: 238.49341pt x 238.49835pt.
 
 
@@ -624,7 +621,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 File: ./imagenes//7_3_promedio_especies_bn.png Graphic file (type png)
 <use ./imagenes//7_3_promedio_especies_bn.png>
 Package pdftex.def Info: ./imagenes//7_3_promedio_especies_bn.png  used on inpu
-t line 155.
+t line 181.
 (pdftex.def)             Requested size: 238.49341pt x 238.49835pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -633,50 +630,43 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4 <./imagenes//6_filtro.png> <./imagenes//7_1_promedio.png>]
-<./imagenes//8_1_pixeles_general.png, id=102, 867.24pt x 361.35pt>
-File: ./imagenes//8_1_pixeles_general.png Graphic file (type png)
-<use ./imagenes//8_1_pixeles_general.png>
-Package pdftex.def Info: ./imagenes//8_1_pixeles_general.png  used on input lin
-e 166.
-(pdftex.def)             Requested size: 397.48499pt x 165.62201pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<./imagenes//8_3_pixeles_especies_color.png, id=103, 722.7pt x 433.62pt>
-File: ./imagenes//8_3_pixeles_especies_color.png Graphic file (type png)
-<use ./imagenes//8_3_pixeles_especies_color.png>
-Package pdftex.def Info: ./imagenes//8_3_pixeles_especies_color.png  used on in
-put line 178.
-(pdftex.def)             Requested size: 397.48499pt x 238.49173pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5 <./imagenes//7_2_promedio_especies_color.png> <./imagenes//7_3_promedio_esp
 ecies_bn.png>]
-<./imagenes//9_1_pca.png, id=112, 867.24pt x 361.35pt>
+<./imagenes//8_1_pixeles_general.png, id=110, 867.24pt x 361.35pt>
+File: ./imagenes//8_1_pixeles_general.png Graphic file (type png)
+<use ./imagenes//8_1_pixeles_general.png>
+Package pdftex.def Info: ./imagenes//8_1_pixeles_general.png  used on input lin
+e 200.
+(pdftex.def)             Requested size: 298.11374pt x 124.21376pt.
+<./imagenes//8_3_pixeles_especies_color.png, id=111, 722.7pt x 433.62pt>
+File: ./imagenes//8_3_pixeles_especies_color.png Graphic file (type png)
+<use ./imagenes//8_3_pixeles_especies_color.png>
+Package pdftex.def Info: ./imagenes//8_3_pixeles_especies_color.png  used on in
+put line 212.
+(pdftex.def)             Requested size: 397.48499pt x 238.49173pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <./imagenes//8_1_pixeles_general.png> <./imagenes//8_3_pixeles_especies_col
+or.png>]
+<./imagenes//9_1_pca.png, id=120, 867.24pt x 361.35pt>
 File: ./imagenes//9_1_pca.png Graphic file (type png)
 <use ./imagenes//9_1_pca.png>
-Package pdftex.def Info: ./imagenes//9_1_pca.png  used on input line 190.
+Package pdftex.def Info: ./imagenes//9_1_pca.png  used on input line 243.
 (pdftex.def)             Requested size: 397.48499pt x 165.62201pt.
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[6 <./imagenes//8_1_pixeles_general.png> <./imagenes//8_3_pixeles_especies_colo
-r.png>] [7 <./imagenes//9_1_pca.png>] (pre_tp1_jsg.aux)
+[7 <./imagenes//9_1_pca.png>] (pre_tp1_jsg.aux)
 Package rerunfilecheck Info: File `pre_tp1_jsg.out' has not changed.
 (rerunfilecheck)             Checksum: 49BD8DB5DB9B2247FD60A039BE3CA8EF;2016.
  ) 
 Here is how much of TeX's memory you used:
- 12985 strings out of 476331
- 212387 string characters out of 5786821
+ 12998 strings out of 476331
+ 212501 string characters out of 5786821
  1861660 words of memory out of 5000000
  33068 multiletter control sequences out of 15000+600000
- 544129 words of font info for 130 fonts, out of 8000000 for 9000
+ 543699 words of font info for 139 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,8n,76p,1149b,466s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Usuario\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ec
@@ -685,9 +675,9 @@ tic/uhvr8a.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/urw/
 times/utmb8a.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/ur
 w/times/utmr8a.pfb><C:/Users/Usuario/AppData/Local/Programs/MiKTeX/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on pre_tp1_jsg.pdf (7 pages, 3769832 bytes).
+Output written on pre_tp1_jsg.pdf (7 pages, 3796125 bytes).
 PDF statistics:
  173 PDF objects out of 1000 (max. 8388607)
  33 named destinations out of 1000 (max. 500000)
- 37029 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 34981 words of extra memory for PDF output out of 35830 (max. 10000000)
 

@@ -70,11 +70,18 @@ Explorar y graficar los subconjuntos de imágenes que representan flores de la m
 especie.}
 \pagebreak
 
+En el siguiente gráfico, se tomó una muestra de cuatro flores por especie:
+
 \begin{figure}[h!]
   \centering  
   \includegraphics[width=1\textwidth]{1_ejemplos_flores.png}
   \caption{Exploración de especies de flores}
 \end{figure}
+
+Analizando todos los archivos noté que la imagen '00218.png'
+tiene una resolución mayor a la del resto, lo cual 
+puede dificultar algunos análisis como el cálculo de una imagen. Por lo tanto,
+se decidió quitar la imagen del análisis.
 
 \section{Manipulación de datos}
 
@@ -94,9 +101,14 @@ especie.}
 \pagebreak
 \begin{figure}[h!]
   \centering    
-  \includegraphics[width=.3\textwidth]{3_binario.png}
-  \caption{Imagen binaria}
+  \includegraphics[width=.75 \textwidth]{3_binario.png}
+  \caption{Imágenes binarias con disintos umbrales}
 \end{figure}
+
+Para pasar una imagen a binaria, es necesario establecer un umbral para el valor del píxel.
+De esa manera, cualquier pixel que supere ese umbral será blanco y cualquier pixel que esté por
+debajo será negro. A medida que aumentes el umbral, como se ve en las imágenes, una mayor proporción
+de los píxeles pasarán a ser negros.
 
 \subsection{Imagen recortada}
 \label{others}
@@ -119,17 +131,31 @@ partes de diferentes imágenes.}
   \caption{Imagenes con píxeles mezclados e intercambiados}
 \end{figure}
 
+Con respecto a la mezcla de imágenes, se puede alterar el tamaño de la porción
+de las imágenes, por lo que se podría mezclar cada pixel o bien utilizar
+cuadrados más grandes.
+
 \subsection{Filtros de imagen}
 
 {\emph Aplicar dos tipos diferentes de filtros sobre una imagen, 
 explique en qué casos conviene usar cada uno.}
-\pagebreak
-
 \begin{figure}[h!]
   \centering    
   \includegraphics[width=1\textwidth]{6_filtro.png}
   \caption{Imagenes con filtros}
 \end{figure}
+
+El filtro mínimo toma una porción de píxeles (en este caso, de tamaño 2) y 
+le aplica a todos el valor del píxel mínimo. Se utiliza para remover 
+outliers positivos, es decir píxeles de colores claros.
+
+El filtro gaussiano tiene un uso similar al mean filter, con la
+diferencia de que el primero tiene en cuenta la distancia de los 
+píxeles a los que se les aplica el filtro. De esa manera, los píxeles
+más cercanos al centro del conjunto de píxeles (en este caso se seleccionó un
+desvío estándar de 1) tienen mayor peso que los lejanos. Se suele preferir
+frente al medio cuando se quiere suavizar la imagen pero sin transiciones
+fuertes entre los píxeles.
 
 \subsection{Imágenes promedio}
 
@@ -147,15 +173,23 @@ blanco y negro?}
 \begin{figure}[h!]
   \centering    
   \includegraphics[width=.6\textwidth]{7_2_promedio_especies_color.png}
-  \caption{Imagenes promedio color y blanco y negro}
+  \caption{Imagenes promedio color}
 \end{figure}
 
 \begin{figure}[h!]
   \centering    
   \includegraphics[width=.6\textwidth]{7_3_promedio_especies_bn.png}
-  \caption{Imagenes promedio color y blanco y negro}
+  \caption{Imagenes promedio blanco y negro}
 \end{figure}
 \pagebreak
+Las imágenes promedio en color permiten distinguirlas facilmente. Incluso,
+en el caso de la especie 4, permite identificar de forma bastante precisa sus
+características. En el resto se puede apreciar el rango de color en el que se
+manejan sus pétalos. Las imágenes en blanco y negro, en cambio, dificultan identificar diferencias
+entre especies, a excepción de la especie 4. En la especie 1 ni siquiera se
+puede identificar la flor con respecto al fondo. Es posible que modificando el
+umbral se logre distinguir mejor otras especies.
+
 \section{Búsqueda de features}
 
 {\emph Analizar las distribuciones de valores de pixels por cada especie. ¿Se puede distinguir
@@ -163,7 +197,7 @@ una especie en algún rango de color?}
 
 \begin{figure}[h!]
   \centering    
-  \includegraphics[width=1\textwidth]{8_1_pixeles_general.png}
+  \includegraphics[width=.75\textwidth]{8_1_pixeles_general.png}
   \caption{Distribución promedio de píxeles}
 \end{figure}
 
@@ -178,12 +212,31 @@ una especie en algún rango de color?}
   \includegraphics[width=1\textwidth]{8_3_pixeles_especies_color.png}
   \caption{Distribución de pixeles de color por especie}
 \end{figure}
+
+Para este análisis, es muy útil referenciarse con las imágenes promedio.
+Por ejemplo, la imagen promedio global contiene una gran cantidad de píxeles
+rojos, lo cual se evidencia en su aspecto rosado. Interesantemente, la especie
+8 mantiene una distribución similar, lo cual se evidencia en que su promedio
+también es rosado. Otra especie a destacar es la 4, puesto que la distribución
+de los tres colores es casi idéntico, expresándose en sus pétalos blancos.
 \pagebreak
 
 \subsection{Análisis de componentes principales}
 
 {\emph Realizar una inspección de las componentes principales del dataset y analizar si se
 pueden identiﬁcar las especies en esta representación.}
+
+Una vez realizado el análisis de componentes principales, se midió y graficó la
+varianza explicada acumulada de cada componente. Como se ve en el gráfizo de la
+izquierda, los primeros 2 componentes explican el 20 por ciento de la varianza,
+lo cual es un valor bastante bajo para realizar un análisis significativo.
+Adicionalmente,  si quisiéramos explicar al menos el 70 por ciento de la varianza,
+necesitaríamos un poco menos de 50 componentes.
+
+Esta conclusión se refuerza con el gráfico de la derecha, en donde se utilizan
+los primeros dos componentes y se colorean los puntos con la especie correspondiente.
+Como se puede apreciar, no se puede distinguir ningún grupo de puntos de un color
+particular.
 
 \begin{figure}[h!]
   \centering    
