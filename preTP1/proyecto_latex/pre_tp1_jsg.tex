@@ -1,6 +1,6 @@
 \documentclass{article}
 
-\usepackage{neurips_2023}
+\usepackage{template}
 
 
 
@@ -27,40 +27,6 @@
 
 \maketitle
 
-\section{Introducción}
-
-El procesamiento de imágenes resulta desafiante por su alta 
-dimensionalidad. La estructura de una {\bf imagen digital} consiste 
-en una  {\bf matriz de NxM}, en donde la subunidad constituyente de 
-la matriz es un  {\bf pixel} que codifica información para un color 
-particular. Cada pixel representa la intesidad de luz en ese 
-punto, que generalmente varía entre  {\bf [0,255]}, 
-lo que es equivalente a  {\bf8 bits.}\
-
-Para representar imágenes a colores, se utiliza un modelo de 
-percepción humana, en donde el color resulta a través de un
-sistema aditivo. El modelo se basa en la teoría de los componentes
-primarios del color que son Rojo, Verde y Azul  {\bf (RGB Red, Green 
-and Blue}, por sus siglas en inglés). Por consiguiente, para 
-representar digitalmente una imagen color, se necesitan  {\bf 3 
-matrices de NxM}. Una para el Rojo, otra para el Verde y 
-otra para el Azul.
-
-\section{Objetivos}
-
-
-Familiarizarse con el procesamiento de imágenes. Para ello, se proponen 
-diferentes manipulaciones que permitirán preparar el dataset para la 
-detección y exploración de agrupamientos naturales.
-
-\section{Estructura de los datos}
-
-A partir del siguiente \href{https://www.kaggle.com/datasets/olgabelitskaya/flower-color-images}{link},
-se obtendrán las imágenes a color de {\bf 210 flores} pertenecientes a {\bf 10 especies 
-diferentes}. Cada imagen consiste en un archivo {\bf .PNG} de 128 pixeles de ancho 
-por 128 pixeles de profundidad ({\bf 128x128x3}). Adicionalamente, se encuentra el 
-archivo {\bf .CSV} con las etiquetas (labels) que corresponden a la especie de cada imagen.
-
 \section{Procesamiento de imágenes}
 
 {\emph Cargar el dataset de imágenes y sus respectivas etiquetas. Es importante asegurarse que las 
@@ -68,7 +34,6 @@ imágenes sean comparables en color, valor, rango y tamaño.
 
 Explorar y graficar los subconjuntos de imágenes que representan flores de la misma
 especie.}
-\pagebreak
 
 En el siguiente gráfico, se tomó una muestra de cuatro flores por especie:
 
@@ -78,10 +43,7 @@ En el siguiente gráfico, se tomó una muestra de cuatro flores por especie:
   \caption{Exploración de especies de flores}
 \end{figure}
 
-Analizando todos los archivos noté que la imagen '00218.png'
-tiene una resolución mayor a la del resto, lo cual 
-puede dificultar algunos análisis como el cálculo de una imagen. Por lo tanto,
-se decidió quitar la imagen del análisis.
+En cada una de ellas se pueden apreciar determinadas características comunes que permiten diferenciarlas de las otras 8, en especial el color de sus pétalos.
 
 \section{Manipulación de datos}
 
@@ -91,24 +53,22 @@ se decidió quitar la imagen del análisis.
 
 \begin{figure}[h!]
   \centering    
-  \includegraphics[width=1\textwidth]{2_brillo.png}
+  \includegraphics[width=.75\textwidth]{2_brillo.png}
   \caption{Ajuste de brillo}
 \end{figure}
-
+\pagebreak
 \subsection{Imagen en blanco y negro}
 
 {\emph Convertir una de las imágenes a blanco y negro (binario). ¿Es la única manera? Si existen otras transformaciones mostrar más de una conversión}
-\pagebreak
+
 \begin{figure}[h!]
   \centering    
   \includegraphics[width=.75 \textwidth]{3_binario.png}
   \caption{Imágenes binarias con disintos umbrales}
 \end{figure}
 
-Para pasar una imagen a binaria, es necesario establecer un umbral para el valor del píxel.
-De esa manera, cualquier pixel que supere ese umbral será blanco y cualquier pixel que esté por
-debajo será negro. A medida que aumentes el umbral, como se ve en las imágenes, una mayor proporción
-de los píxeles pasarán a ser negros.
+Para pasar una imagen a binaria, es necesario establecer un umbral. De esa manera, cualquier pixel que supere ese umbral será blanco y cualquier pixel que esté por
+debajo será negro. A medida que se aumente el umbral, como se ve en las imágenes, una mayor proporción de los píxeles pasarán a ser negros.
 
 \subsection{Imagen recortada}
 \label{others}
@@ -131,9 +91,7 @@ partes de diferentes imágenes.}
   \caption{Imagenes con píxeles mezclados e intercambiados}
 \end{figure}
 
-Con respecto a la mezcla de imágenes, se puede alterar el tamaño de la porción
-de las imágenes, por lo que se podría mezclar cada pixel o bien utilizar
-cuadrados más grandes.
+Para ambos casos, se puede alterar el tamaño de la porción de las imágenes, por lo que se podría mezclar cada pixel, o bien utilizar cuadrados más grandes como en la imágen con píxeles de varias flores.
 
 \subsection{Filtros de imagen}
 
@@ -154,7 +112,7 @@ diferencia de que el primero tiene en cuenta la distancia de los
 píxeles a los que se les aplica el filtro. De esa manera, los píxeles
 más cercanos al centro del conjunto de píxeles (en este caso se seleccionó un
 desvío estándar de 1) tienen mayor peso que los lejanos. Se suele preferir
-frente al medio cuando se quiere suavizar la imagen pero sin transiciones
+frente al mean filter cuando se quiere suavizar la imagen pero sin transiciones
 fuertes entre los píxeles.
 
 \subsection{Imágenes promedio}
@@ -165,41 +123,40 @@ blanco y negro?}
 
 \begin{figure}[h!]
   \centering    
-  \includegraphics[width=.7\textwidth]{7_1_promedio.png}
+  \includegraphics[width=.4\textwidth]{7_1_promedio.png}
   \caption{Imagenes promedio color y blanco y negro}
 \end{figure}
 
 
-\begin{figure}[h!]
+\begin{figure}[h]
   \centering    
-  \includegraphics[width=.6\textwidth]{7_2_promedio_especies_color.png}
-  \caption{Imagenes promedio color}
+  \includegraphics[width=1\textwidth]{7_4_promedio_especies_ambos.png}
+  \caption{Imagenes promedio por especie}
 \end{figure}
 
-\begin{figure}[h!]
-  \centering    
-  \includegraphics[width=.6\textwidth]{7_3_promedio_especies_bn.png}
-  \caption{Imagenes promedio blanco y negro}
-\end{figure}
-\pagebreak
-Las imágenes promedio en color permiten distinguirlas facilmente. Incluso,
-en el caso de la especie 4, permite identificar de forma bastante precisa sus
-características. En el resto se puede apreciar el rango de color en el que se
-manejan sus pétalos. Las imágenes en blanco y negro, en cambio, dificultan identificar diferencias
-entre especies, a excepción de la especie 4. En la especie 1 ni siquiera se
-puede identificar la flor con respecto al fondo. Es posible que modificando el
-umbral se logre distinguir mejor otras especies.
+
+%\begin{figure}[h!]
+%  \centering    
+%  \includegraphics[width=.6\textwidth]{7_2_promedio_especies_color.png}
+%  \caption{Imagenes promedio color}
+%\end{figure}
+
+%\begin{figure}[h!]
+%  \centering    
+%  \includegraphics[width=.6\textwidth]{7_3_promedio_especies_bn.png}
+%  \caption{Imagenes promedio blanco y negro}
+%\end{figure}
+Analizando todos los archivos noté que la imagen '00218.png' tiene una resolución mayor a la del resto, lo cual puede dificultar algunos análisis como el cálculo de la imagen promedio. Por lo tanto, se decidió quitar la imagen del análisis.
+
+Con respecto a la imagen promedio, tanto a color como en blanco y negro, se pueden extraer dos características: que las flores comparten una forma redonda, y que cuentan con un fondo verde.
+
+Las imágenes promedio en color se pueden distinguir con facilidad. Incluso, en el caso de la especie 4, permite identificar de forma bastante precisa el círculo central amarillo. En el resto, se puede apreciar el rango de color en el que se manejan sus pétalos. Las imágenes en blanco y negro, en cambio, dificultan identificar diferencias
+entre especies, a excepción de la especie 4. En la especie 1 ni siquiera se puede identificar la flor con respecto al fondo.
 
 \section{Búsqueda de features}
 
 {\emph Analizar las distribuciones de valores de pixels por cada especie. ¿Se puede distinguir
 una especie en algún rango de color?}
-
-\begin{figure}[h!]
-  \centering    
-  \includegraphics[width=.75\textwidth]{8_1_pixeles_general.png}
-  \caption{Distribución promedio de píxeles}
-\end{figure}
 
 % \begin{figure}[h!]
 %   \centering    
@@ -209,38 +166,31 @@ una especie en algún rango de color?}
 
 \begin{figure}[h!]
   \centering    
-  \includegraphics[width=1\textwidth]{8_3_pixeles_especies_color.png}
+  \includegraphics[width=1\textwidth]{8_3_pixeles_especies_color_muestra.png}
   \caption{Distribución de pixeles de color por especie}
 \end{figure}
 
 Para este análisis, es muy útil referenciarse con las imágenes promedio.
-Por ejemplo, la imagen promedio global contiene una gran cantidad de píxeles
-rojos, lo cual se evidencia en su aspecto rosado. Interesantemente, la especie
-8 mantiene una distribución similar, lo cual se evidencia en que su promedio
-también es rosado. Otra especie a destacar es la 4, puesto que la distribución
-de los tres colores es casi idéntico, expresándose en sus pétalos blancos.
-\pagebreak
+Por ejemplo, las especies 1, 2 y 8 contienen una gran cantidad de píxeles
+rojos de alto valor, lo cual se evidencia en que el color de sus pétalos son cercanos al rojo. Otra especie a destacar es la 4, puesto que la distribución de los tres colores es casi idéntico, expresándose en sus pétalos blancos.
 
 \subsection{Análisis de componentes principales}
 
 {\emph Realizar una inspección de las componentes principales del dataset y analizar si se
 pueden identiﬁcar las especies en esta representación.}
 
-Una vez realizado el análisis de componentes principales, se midió y graficó la
-varianza explicada acumulada de cada componente. Como se ve en el gráfizo de la
+Una vez escaladas las variables y obtenido los componentes principales, se midió y graficó la varianza explicada acumulada de cada componente. Como se ve en el gráfico de la
 izquierda, los primeros 2 componentes explican el 20 por ciento de la varianza,
 lo cual es un valor bastante bajo para realizar un análisis significativo.
 Adicionalmente,  si quisiéramos explicar al menos el 70 por ciento de la varianza,
 necesitaríamos un poco menos de 50 componentes.
 
-Esta conclusión se refuerza con el gráfico de la derecha, en donde se utilizan
-los primeros dos componentes y se colorean los puntos con la especie correspondiente.
-Como se puede apreciar, no se puede distinguir ningún grupo de puntos de un color
-particular.
+Esta conclusión se refuerza con el gráfico de la derecha, en donde se utilizan los primeros dos componentes y se colorean los puntos con la especie correspondiente.
+Como se puede apreciar, no se puede distinguir ningún grupo de puntos de un color particular.
 
 \begin{figure}[h!]
   \centering    
-  \includegraphics[width=1\textwidth]{9_1_pca.png}
+  \includegraphics[width=.9\textwidth]{9_1_pca.png}
   \caption{Análisis de componentes principales}
 \end{figure}
 
