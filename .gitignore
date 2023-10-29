@@ -1,0 +1,4 @@
+# ignore .png and .pkg files
+*.pkg
+*.png
+*.csv
