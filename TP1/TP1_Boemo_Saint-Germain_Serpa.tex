@@ -1,0 +1,615 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[journal,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+\usepackage{xcolor}
+\usepackage{soul}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage{caption}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+%--------------------
+% Class Options:
+%--------------------
+%----------
+% journal
+%----------
+% Choose between the following MDPI journals:
+% acoustics, actuators, addictions, admsci, adolescents, aerobiology, aerospace, agriculture, agriengineering, agrochemicals, agronomy, ai, air, algorithms, allergies, alloys, analytica, analytics, anatomia, animals, antibiotics, antibodies, antioxidants, applbiosci, appliedchem, appliedmath, applmech, applmicrobiol, applnano, applsci, aquacj, architecture, arm, arthropoda, arts, asc, asi, astronomy, atmosphere, atoms, audiolres, automation, axioms, bacteria, batteries, bdcc, behavsci, beverages, biochem, bioengineering, biologics, biology, biomass, biomechanics, biomed, biomedicines, biomedinformatics, biomimetics, biomolecules, biophysica, biosensors, biotech, birds, bloods, blsf, brainsci, breath, buildings, businesses, cancers, carbon, cardiogenetics, catalysts, cells, ceramics, challenges, chemengineering, chemistry, chemosensors, chemproc, children, chips, cimb, civileng, cleantechnol, climate, clinpract, clockssleep, cmd, coasts, coatings, colloids, colorants, commodities, compounds, computation, computers, condensedmatter, conservation, constrmater, cosmetics, covid, crops, cryptography, crystals, csmf, ctn, curroncol, cyber, dairy, data, ddc, dentistry, dermato, dermatopathology, designs, devices, diabetology, diagnostics, dietetics, digital, disabilities, diseases, diversity, dna, drones, dynamics, earth, ebj, ecologies, econometrics, economies, education, ejihpe, electricity, electrochem, electronicmat, electronics, encyclopedia, endocrines, energies, eng, engproc, entomology, entropy, environments, environsciproc, epidemiologia, epigenomes, est, fermentation, fibers, fintech, fire, fishes, fluids, foods, forecasting, forensicsci, forests, foundations, fractalfract, fuels, future, futureinternet, futurepharmacol, futurephys, futuretransp, galaxies, games, gases, gastroent, gastrointestdisord, gels, genealogy, genes, geographies, geohazards, geomatics, geosciences, geotechnics, geriatrics, grasses, gucdd, hazardousmatters, healthcare, hearts, hemato, hematolrep, heritage, higheredu, highthroughput, histories, horticulturae, hospitals, humanities, humans, hydrobiology, hydrogen, hydrology, hygiene, idr, ijerph, ijfs, ijgi, ijms, ijns, ijpb, ijtm, ijtpp, ime, immuno, informatics, information, infrastructures, inorganics, insects, instruments, inventions, iot, j, jal, jcdd, jcm, jcp, jcs, jcto, jdb, jeta, jfb, jfmk, jimaging, jintelligence, jlpea, jmmp, jmp, jmse, jne, jnt, jof, joitmc, jor, journalmedia, jox, jpm, jrfm, jsan, jtaer, jvd, jzbg, kidneydial, kinasesphosphatases, knowledge, land, languages, laws, life, liquids, literature, livers, logics, logistics, lubricants, lymphatics, machines, macromol, magnetism, magnetochemistry, make, marinedrugs, materials, materproc, mathematics, mca, measurements, medicina, medicines, medsci, membranes, merits, metabolites, metals, meteorology, methane, metrology, micro, microarrays, microbiolres, micromachines, microorganisms, microplastics, minerals, mining, modelling, molbank, molecules, mps, msf, mti, muscles, nanoenergyadv, nanomanufacturing,\gdef\@continuouspages{yes}} nanomaterials, ncrna, ndt, network, neuroglia, neurolint, neurosci, nitrogen, notspecified, %%nri, nursrep, nutraceuticals, nutrients, obesities, oceans, ohbm, onco, %oncopathology, optics, oral, organics, organoids, osteology, oxygen, parasites, parasitologia, particles, pathogens, pathophysiology, pediatrrep, pharmaceuticals, pharmaceutics, pharmacoepidemiology,\gdef\@ISSN{2813-0618}\gdef\@continuous pharmacy, philosophies, photochem, photonics, phycology, physchem, physics, physiologia, plants, plasma, platforms, pollutants, polymers, polysaccharides, poultry, powders, preprints, proceedings, processes, prosthesis, proteomes, psf, psych, psychiatryint, psychoactives, publications, quantumrep, quaternary, qubs, radiation, reactions, receptors, recycling, regeneration, religions, remotesensing, reports, reprodmed, resources, rheumato, risks, robotics, ruminants, safety, sci, scipharm, sclerosis, seeds, sensors, separations, sexes, signals, sinusitis, skins, smartcities, sna, societies, socsci, software, soilsystems, solar, solids, spectroscj, sports, standards, stats, std, stresses, surfaces, surgeries, suschem, sustainability, symmetry, synbio, systems, targets, taxonomy, technologies, telecom, test, textiles, thalassrep, thermo, tomography, tourismhosp, toxics, toxins, transplantology, transportation, traumacare, traumas, tropicalmed, universe, urbansci, uro, vaccines, vehicles, venereology, vetsci, vibration, virtualworlds, viruses, vision, waste, water, wem, wevj, wind, women, world, youth, zoonoticdis 
+% For posting an early version of this manuscript as a preprint, you may use "preprints" as the journal. Changing "submit" to "accept" before posting will remove line numbers.
+
+%---------
+% article
+%---------
+% The default type of manuscript is "article", but can be replaced by: 
+% abstract, addendum, article, book, bookreview, briefreport, casereport, comment, commentary, communication, conferenceproceedings, correction, conferencereport, entry, expressionofconcern, extendedabstract, datadescriptor, editorial, essay, erratum, hypothesis, interestingimage, obituary, opinion, projectreport, reply, retraction, review, perspective, protocol, shortnote, studyprotocol, systematicreview, supfile, technicalnote, viewpoint, guidelines, registeredreport, tutorial
+% supfile = supplementary materials
+
+%----------
+% submit
+%----------
+% The class option "submit" will be changed to "accept" by the Editorial Office when the paper is accepted. This will only make changes to the frontpage (e.g., the logo of the journal will get visible), the headings, and the copyright information. Also, line numbering will be removed. Journal info and pagination for accepted papers will also be assigned by the Editorial Office.
+
+%------------------
+% moreauthors
+%------------------
+% If there is only one author the class option oneauthor should be used. Otherwise use the class option moreauthors.
+
+%---------
+% pdftex
+%---------
+% The option pdftex is for use with pdfLaTeX. Remove "pdftex" for (1) compiling with LaTeX & dvi2pdf (if eps figures are used) or for (2) compiling with XeLaTeX.
+
+%=================================================================
+% MDPI internal commands - do not modify
+%\firstpage{1} 
+%\makeatletter 
+%\setcounter{page}{\@firstpage} 
+%\makeatother
+%\pubvolume{1}
+%\issuenum{1}
+%\articlenumber{0}
+%\pubyear{2023}
+%\copyrightyear{2023}
+%\externaleditor{Academic Editor: Firstname Lastname}
+%\datereceived{ } 
+%\daterevised{ } % Comment out if no revised date
+%\dateaccepted{ } 
+%\datepublished{ } 
+%\datecorrected{} % For corrected papers: "Corrected: XXX" date in the original paper.
+%\dateretracted{} % For corrected papers: "Retracted: XXX" date in the original paper.
+%\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+%\pdfoutput=1 % Uncommented for upload to arXiv.org
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, float, amsmath, amssymb, lineno, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, colortbl, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, array, tabularx, pbox, ragged2e, tocloft, marginnote, marginfix, enotez, amsthm, natbib, hyperref, cleveref, scrextend, url, geometry, newfloat, caption, draftwatermark, seqsplit
+% cleveref: load \crefname definitions after \begin{document}
+
+%=================================================================
+% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
+%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{{Algoritmos de clusterización y detección de objetos en imágenes naturales}}
+
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Title}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0000-0000-000X} % Add \orcidA{} behind the author's name
+%\newcommand{\orcidauthorB}{0000-0000-0000-000X} % Add \orcidB{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{Florencia Boemo, José Saint Germain y Leopoldo Serpa}
+
+%\simplesumm{} % Simple summary
+
+%\conference{} % An extended version of a conference paper
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{En el presente trabajo, se estudió la capacidad de la red neuronal convolucional VGG16 para extraer atributos relevantes de imágenes naturales. Las features extraidas se utilizaron en tareas de clasificación, mediante el uso de los algoritmos \textit{k-means}, \textit{k-medoids} y DBSCAN, y también para la identificación de objetos, a través de clustering espectral y\textit{ Connected component labeling}. No se detectaron marcadas diferencias en la calidad de la clasificación con \textit{k-means} y \textit{k-medoids}. La clasificación con DBSCAN no arrojó en general resultados satisfactorios, atribuyéndose esta mala performance a la alta dimensionalidad del dataset. Por otra parte, se buscó identificar objetos en imágenes, a partir de los algoritmos \textit{connected component labelling} y clustering espectral. Se obtuvieron resultados exitosos en ambos casos para la imagen de muestra. En particular, el primero tuvo una buena performance separando el objeto del fondo, mientras que con clustering espectral pudieron aislarse partes del objeto.}
+
+% Keywords
+\keyword{\textit{k-means}; \textit{k-medoids}; \textit{DBSCAN}; \textit{connected component labelling}; \textit{spectral clustering}} 
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Diversity
+%\LSID{\url{http://}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Applied Sciences
+%\featuredapplication{Authors are encouraged to provide a concise description of the specific application or a potential application of the work. This section is not mandatory.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Data
+%\dataset{DOI number or link to the deposited data set if the data set is published separately. If the data set shall be published as a supplement to this paper, this field will be filled by the journal editors. In this case, please submit the data set as a supplement.}
+%\datasetlicense{License under which the data set is made available (CC0, CC-BY, CC-BY-SA, CC-BY-NC, etc.)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Toxins
+%\keycontribution{The breakthroughs or highlights of the manuscript. Authors can write one or two sentences to describe the most important part of the paper.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Encyclopedia
+%\encyclopediadef{For entry manuscripts only: please provide a brief overview of the entry title instead of an abstract.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Only for the journal Advances in Respiratory Medicine
+%\addhighlights{yes}
+%\renewcommand{\addhighlights}{%
+
+%\noindent This is an obligatory section in “Advances in Respiratory Medicine”, whose goal is to increase the discoverability and readability of the article via search engines and other scholars. Highlights should not be a copy of the abstract, but a simple text allowing the reader to quickly and simplified find out what the article is about and what can be cited from it. Each of these parts should be devoted up to 2~bullet points.\vspace{3pt}\\
+%\textbf{What are the main findings?}
+% \begin{itemize}[labelsep=2.5mm,topsep=-3pt]
+% \item First bullet.
+% \item Second bullet.
+% \end{itemize}\vspace{3pt}
+%\textbf{What is the implication of the main finding?}
+% \begin{itemize}[labelsep=2.5mm,topsep=-3pt]
+% \item First bullet.
+% \item Second bullet.
+% \end{itemize}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The order of the section titles is different for some journals. Please refer to the "Instructions for Authors” on the journal homepage.
+
+\section{Introducción}
+
+La clasificación de imágenes es una de las bases del campo de la visión artificial (\textit{computer vision}), ya que sienta los fundamentos para tareas más complejas como localización, detección y segmentación. Antes del advenimiento de las redes neuronales, los algoritmos tradicionales de extracción de atributos se enfocaban en identificar características específicas de las imágenes. Por ello, estos métodos tenían una capacidad de generalización pobre \cite{ref-rev1}. En años recientes, los modelos de \textit{deep learning}, que utilizan múltiples capas de procesamiento no lineal de la información, mostraron resultados superadores. En particular, las redes neuronales convolucionales se han convertido en la arquitectura preferida en cuestiones de reconocimiento, clasificación y detección de imágenes.
+
+Las redes neuronales convolucionales son redes \textit{feedforward}, en las que el flujo de información se da en una única dirección. Su arquitectura puede ser variable, pero en general consisten de capas convolucionales, de \textit{pooling}, y capas \textit{fully-connected}, agrupadas en módulos. Los módulos se apilan para generar una red profunda. De manera simple, las capas convolucionales extraen los atributos de las imágenes, las capas de \textit{pooling} reducen la dimensionalidad de los atributos, y las capas \textit{fully-connected} interpretan los features extraidos. 
+
+Existen varios modelos considerados clásicos en redes neuronales convolucionales, tales como LeNet-5, AlexNet, VGG y NetworkInNetwork \cite{ref-rev2}. En particular, en este trabajo se explorará el funcionamiento de la red neuronal VGG16. Las potenciales aplicaciones de esta red han sido ampliamente estudiadas, principalmente en el campo de la salud (por ejemplo, detección de cáncer de mama \cite{ref-cancer}, retinopatías producto de diabetes \cite{ref-retino} y nódulos en pulmones \cite{ref-pulmones}) y de la biología (por ej., identificación de plagas en berenjenas \cite{ref-berenjenas} y hojas de tabaco \cite{ref-tabaco} y reconocimiento de especies de peces \cite{ref-peces}). En el presente trabajo, se buscará extraer atributos relevantes de un dataset de imágenes naturales, para luego utilizar dichos atributos en tareas de clasificación e identificación. Se plantea que, si bien las imágenes presentan características diferentes (esto es, no pertenecen a una misma clase de objeto ni están capturadas con composiciones similares), la red VGG16 es capaz de extraer features que permitan superar estas barreras y arribar a clasificación e identificación óptimas.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Materiales y métodos}
+
+En el presente trabajo, se buscará extraer atributos relevantes de un conjunto de imágenes. Para ello, se analizará un dataset de imágenes naturales, conteniendo 6899 fotografías de distintas clases de objetos \cite{ref-kaggle}. En particular, el conjunto de datos incluye imágenes de aviones, autos, gatos, flores, perros, frutas, motos y personas. El dataset es de acceso público, y puede descargarse de internet.
+
+Para el análisis de atributos, se utilizará la red neuronal convolucional VGG16. Su arquitectura permite el reconocimiento de imágenes, a través de la detección y extracción de sus atributos. Esta red es de fácil implementación, si bien su entrenamiento demora mucho y requiere gran poder de cómputo. Asimismo, su configuración permite distinguir un gran nivel de detalle en las imágenes. La implementación de VGG16 en Keras provee un modelo pre-entrenado, con pesos ya calculados. Por defecto, VGG16 trabaja con imágenes RGB de 224x224 pixels, por lo cual es necesario realizar un pre-procesamiento sobre el dataset para adaptar el tamaño de las imágenes. 
+
+Los atributos relevantes extraídos de las imágenes serán utilizados para alimentar algoritmos no-supervisados para la identificación de clusters. En particular, se trabajará con \textit{k-means}, \textit{k-medoids} y DBSCAN. Los clusters identificados serán evaluados y validados con diferentes métricas, dado que se cuenta con las categorías de las imágenes. Se buscará además, identificar objetos en una imagen, aplicando los algoritmos de \textit{Connected component labeling} y clustering espectral.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Resultados y discusión}
+
+\subsection{Análisis preliminar de imágenes} \label{preliminar}
+
+A fin de familiarizarse con el dataset, se calculó la imagen promedio para cada clase (Figura ~\ref{promedio-cat}). A simple vista, se puede notar que las clases más homogéneas presentan una imagen promedio más nítida. Tal es el caso de los aviones, las frutas y las motos. Esto podría tener implicancias en futuros procesos de clusterización.
+
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{promedio_categoria.png}
+\captionsetup{justification=centering}
+\caption{Promedio de imágenes para cada categoría del dataset.\label{promedio-cat}}
+\end{figure}   
+\skip
+
+Además, se estudió la distribución de brillo (\textit{brightness}) en cada canal de color, para todos los grupos de fotografías (Figura ~\ref{hist-cat}). Se puede apreciar que no hay sub- o sobreexposición, a excepción de la categoría de frutas. Esto es, las distribuciones no están corridas a valores de brillo extremos. Por lo tanto, podría aventurarse que las imágenes son de buena calidad para la extracción de atributos, ya que no se pierden detalles por efecto de la luz. Para confirmar esta suposición, podría ser relevante comparar la performance de los algoritmos en la categoría frutas frente a las restantes, ya que histogramas con colas pesadas no necesariamente implican pérdida de detalle en las fotografías.
+
+\begin{figure}[H]
+\includegraphics[width = 1\textwidth]{hist_per_category_1.png}
+\captionsetup{justification=centering}
+\caption{Histogramas RGB para cada categoría del dataset.\label{hist-cat}}
+\captionsetup{justification=centering}
+\end{figure}   
+\skip
+
+Finalmente, se procesó el dataset utilizando la red VGG16, obteniéndose como resultado 4096 features. Estos features son los principales atributos que pudo reconocer la red, y que implican una reducción de casi el 98\% de las dimensiones del problema.
+
+\subsection{Clusterización de imágenes con \textit{k-means}}\label{kmeans}
+
+Se aplicó el algoritmo k-means a las imágenes, previo procesamiento con la red VGG16. Se realizaron pruebas con dos, tres, cuatro, cinco, seis, siete y ocho clusters, considerando los hiperparámetros listados en el Cuadro ~\ref{app-kmeans}. El número óptimo de grupos se definió en base al coeficiente de silhouette (Cuadro ~\ref{silh-tabla}) y utilizando el método del codo (Figura ~\ref{codo-kmeans}). A priori, teniendo en cuenta las imágenes disponibles, la clasificación debería ser óptima con ocho clusters.
+
+\begin{table}[H] 
+\captionsetup{justification=centering}
+\caption{Coeficiente de silhouette para cada cluster - \textit{k-means}.\label{silh-tabla}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCC}
+\toprule
+\textbf{Número de clusters}	& \textbf{Coeficiente de silhouette}	\\
+\midrule
+2		& 0.080\\
+3	& 0.102\\
+4	& 0.113\\
+5	& 0.086\\
+6	& 0.144\\
+7	& 0.128\\
+8	& 0.143\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Observando los valores obtenidos en el Cuadro ~\ref{silh-tabla}, es posible apreciar que, para seis y ocho clusters, los coeficientes de silhouette son similares. En la Figura ~\ref{codo-kmeans}, no es posible distinguir un cambio de pendiente marcado para k = 6, mientras que se detecta un leve codo con k = 8. Sin embargo, en la Figura ~\ref{fig:silh-8} se pueden apreciar valores de silhouette negativos para el cluster número 4. Este fenómeno, si bien está presente, es menos marcado cuando se consideran 6 clusters (Figura ~\ref{fig:silh-6}). Es interesante destacar que, con ocho clusters, se obtienen grupos de tamaño similar, mientras que para seis clusters existe uno de ellos con una cantidad de elementos mucho mayor.
+
+\setlength{\intextsep}{3pt}%
+\begin{wrapfigure}{R}{0.5\textwidth}
+\centering
+\includegraphics[width=0.49\textwidth]{elbow_SSE.png}
+\caption{Optimización del número de clusters en \textit{k-means} - Método del codo}
+\label{codo-kmeans}
+\vspace{-110pt}
+\end{wrapfigure}
+\skip
+
+La eficiencia de la clasificación se puede apreciar observando las matrices de confusión para los k considerados (Figura ~\ref{conf-kmeans}), así como los índices de Van Dongen y de Rand ajustado (Cuadro ~\ref{metricas-tabla}).
+
+\vspace{110pt}
+\begin{figure}[hbtp]
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.4]{silhouette k = 6.png} 
+\captionsetup{justification=centering}
+\caption{k = 6}
+\label{fig:silh-6}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.4]{silhouette k = 8.png}
+\captionsetup{justification=centering}
+\caption{k = 8}
+\label{fig:silh-8}
+\end{subfigure}
+\captionsetup{justification=centering}
+\caption{Coeficientes de silhouette}
+\label{silh-kmeans}
+\end{figure}
+
+\begin{figure}[hbtp]
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.38]{matriz_conf_6.png} 
+\captionsetup{justification=centering}
+\caption{k = 6}
+\label{fig:conf-6}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.38]{matriz_conf_8.png}
+\captionsetup{justification=centering}
+\caption{k = 8}
+\label{fig:conf-8}
+\end{subfigure}
+\captionsetup{justification=centering}
+\caption{Matrices de confusión}
+\label{conf-kmeans}
+\end{figure}
+
+\begin{table}[H] 
+\captionsetup{justification=centering}
+\caption{Métricas de bondad de clasificación - \textit{k-means}\label{metricas-tabla}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCC}
+\toprule
+\textbf{Número de clusters}	& \textbf{Índice de Rand ajustado} & \textbf{Índice de Van Dongen}		\\
+\midrule
+ 6 & 0.165 & 0.663 \\ 
+ 8 & 0.011 & 0.980 \\ 	
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Considerando las métricas resumidas en el Cuadro ~\ref{metricas-tabla}, se puede afirmar que, contrariamente a lo esperado, la clasificación en seis clusters es mejor que en ocho. Los clusters generados con k = 6 son más homogéneos internamente, lo que se refleja en un mayor índice de Rand ajustado y un menor índice de Van Dongen. Si bien la matriz de confusión para k = 8 (Figura ~\ref{fig:conf-8}) pareciera indicar menos "mezcla" de las clases en los clusters, se puede apreciar en la Figura ~\ref{fig:silh-8} que el coeficiente de silhouette promedio para dicho k (ver Cuadro ~\ref{silh-tabla}) en realidad está traccionado por el cluster 0, que tiene una performance superior comparada con las otras.
+
+Es interesante destacar que, para k = 6, de todas las categorías de imágenes, la que presentó mayor dispersión entre los clusters fue la de gatos (aprox. 4\% del total de imágenes en otros clusters). Asimismo, las imágenes de personas fueron todas asignadas al mismo cluster. Retomando las observaciones del análisis preliminar (Apartado \ref{preliminar}), podría pensarse que una imagen promedio más borrosa en la Figura ~\ref{promedio-cat} estaría correlacionada con mayor dificultad en la clasificación de dicha categoría. Por otra parte, la clasificación de imágenes de frutas resultó óptima para k = 6 y k = 8, con lo que puede afirmarse que la alta exposición de las fotos no redundó en pérdida de calidad que afectara al clasificador.
+
+A continuación, se visualizó la clasificación en bajas dimensiones utilizando T-SNE. Previo a este análisis, se realizó una reducción de dimensionalidad de los atributos utilizando PCA. Se retuvieron las primeras 200 componentes principales, que en total explican cerca del 80\% de la varianza total.  Se muestran las etiquetas reales de los datos (Figura ~\ref{fig:etiq}), versus la clasificación realizada con \textit{k-means} (Figura ~\ref{fig:tsne-kmeans}). Se pudo verificar que el cluster 2 está compuesto en realidad de tres pequeñas aglomeraciones separadas. Esto está de acuerdo con lo observado en la matriz de confusión (Figura ~\ref{fig:conf-6}), ya que este cluster en particular alberga mayoritariamente imágenes de perros, flores y personas.  
+
+\begin{figure}[hbtp]
+
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.3]{tsne datos etiquetados.png} 
+\captionsetup{justification=centering}
+\caption{Datos etiquetados}
+\label{fig:etiq}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.3]{tsne kmeans k = 6.png}
+\captionsetup{justification=centering}
+\caption{Clasificación con \textit{k-means} (k = 6)}
+\label{fig:tsne-kmeans}
+\end{subfigure}
+\captionsetup{justification=centering}
+\caption{Representación bidimensional (T-SNE) de resultados}
+\label{tsne-kmeans}
+\end{figure}
+
+\subsection{Clusterización de imágenes con k-medoids}
+
+El análisis realizado anteriormente se repitió utilizando \textit{k-medoids o Partition Around Medoids} como método de clasificación. La diferencia entre estos algoritmos radica en la métrica de distancia considerada: para \textit{k-means}, se utiliza la distancia euclidea, mientras que \textit{k-medoids} hace uso de la distancia Manhattan. Teniendo en cuenta que, en general, en situaciones de alta dimensionalidad las distancias de Manhattan funcionan mejor, podría esperarse que la clasificación mejore respecto de la observada en el apartado ~\ref{kmeans}. 
+
+Nuevamente, se probaron distintas cantidades de clusters, y se analizó el número óptimo de los mismos en base al coeficiente de silhouette (Cuadro ~\ref{silh-tabla-kmed})  y al método del codo (Figura ~\ref{codo-kmed}).
+
+\begin{table}[H]
+\captionsetup{justification=centering}
+\caption{Coeficiente de silhouette para cada cluster - \textit{k-medoids}.\label{silh-tabla-kmed}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCC}
+\toprule
+\textbf{Número de clusters}	& \textbf{Coeficiente de silhouette}	\\
+\midrule
+2		& 0.062\\
+3	& 0.064\\
+4	& 0.113\\
+5	& 0.136\\
+6	& 0.129\\
+7	& 0.114\\
+8	& 0.143\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+%\setlength{\intextsep}{3pt}%
+\begin{wrapfigure}[15]{R}{0.5\textwidth}
+%\vspace{-20pt}
+\centering
+\includegraphics[width=0.49\textwidth]{elbow_SSE- kmed.png}
+\caption{Optimización del número de clusters en \textit{k-medoids} - Método del codo}
+\label{codo-kmed}
+\end{wrapfigure}
+
+En un principio, puede observarse que el coeficiente de silhouette para k = 8 no difiere significativamente del obtenido en el análisis de \textit{k-means}. Sin embargo, es relevante analizar la información como un todo, ya que observando la Figura ~\ref{codo-kmed}, se aprecia un codo para k = 5, aunque el coeficiente de silhouette para dicha partición es bastante más bajo (Cuadro ~\ref{silh-tabla-kmed}).
+
+Los coeficientes de silhouette para cada cluster, con k = 5 y k = 8, se muestran en la Figura \ref{silh-kmed}. Se detectan coeficientes de silhouette negativos en ambas particiones, sin ser este fenómeno más marcado en ninguna de ellas. Se aprecia para k = 5 la presencia de un cluster (número 2) con mayor número de elementos. Por el contrario, cuando k = 8 existen agrupamientos con pocos elementos (clusters 3 y 4), lo que sugeriría un posible \textit{overfitting} de los datos.
+
+\begin{figure}[h]
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.38]{silhouette k = 5 kmed.png} 
+\captionsetup{justification=centering}
+\caption{k = 5}
+\label{fig:silh-5-kmed}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.38]{silhouette k = 8 kmed.png}
+\captionsetup{justification=centering}
+\caption{k = 8}
+\label{fig:silh-8-kmed}
+\end{subfigure}
+\captionsetup{justification=centering}
+\caption{Coeficientes de silhouette}
+\label{silh-kmed}
+\vspace{6pt}
+\end{figure}
+
+La calidad del clustering se verificó observando los índices de Rand ajustado y de Van Dongen (Cuadro \ref{metricas-tabla-kmed}), así como las matrices de confusión para ambos k (Figura \ref{conf-kmed}).
+
+\begin{table}[h] 
+\captionsetup{justification=centering}
+\caption{Métricas de bondad de clasificación - \textit{k-medoids}\label{metricas-tabla-kmed}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCC}
+\toprule
+\textbf{Número de clusters}	& \textbf{Índice de Rand ajustado} & \textbf{Índice de Van Dongen}		\\
+\midrule
+ 5 & 0.231 & 0.554 \\ 
+ 8 & 0.011 & 0.792 \\ 	
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{figure}[h]
+
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.38]{matriz_conf_5_kmed.png} 
+\captionsetup{justification=centering}
+\caption{k = 5}
+\label{fig:conf-5}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.38]{matriz_conf_8_kmed.png}
+\captionsetup{justification=centering}
+\caption{k = 8}
+\label{fig:conf-8-kmed}
+\end{subfigure}
+\captionsetup{justification=centering}
+\caption{Matrices de confusión}
+\label{conf-kmed}
+\end{figure}
+
+De acuerdo a la matriz de confusión para k = 5 (Figura ~\ref{fig:conf-5}), el cluster número 2 alberga imágenes de categorías distintas. Más aún, es el cluster que concentra la proporción mayoritaria de fotografías de perros, flores y personas. Es un fenómeno similar al observado en \textit{k-means} para k = 6 (Figura ~\ref{fig:conf-6}). Tampoco existe buena separación en las imágenes de autos y motocicletas. Por el contrario, al considerar la partición con k = 8, se detecta que tanto las imágenes de frutas como las de perros están divididas en dos clusters, en una fracción no despreciable. Además, el algoritmo no separa bien las fotografías de perros y de personas. Por lo tanto, si bien el coeficiente de silhouette en este caso es mayor que para k = 5 (Cuadro ~\ref{silh-kmed}), es válido cuestionarse si la clasificación es necesariamente mejor. Este razonamiento se ve apoyado por las métricas de bondad de clasificación resumidas en el Cuadro ~\ref{metricas-tabla-kmed}.
+
+Se visualizó también el clustering en bajas dimensiones, utilizando T-SNE (figura \ref{tsne-kmeds}), previa reducción de la dimensionalidad. Nuevamente, para k = 5 (Figura ~\ref{fig:tsne-kmeds-5}), se observan tres aglomeraciones diferentes para el cluster 2, que se corresponde con la composición heterogénea de esa clase (perros, flores y personas principalmente, ver Figura ~\ref{fig:etiq}), y dos aglomeraciones para el cluster 3. Puede afirmarse entonces que, con k = 5, el algoritmo no posee buen poder de discriminación. Por otra parte, para k = 8 (Figura ~\ref{fig:tsne-8-kmed}) se aprecia como particularmente problemático el agrupamiento de perros y personas en un mismo cluster, la frontera no definida entre el cluster 0 y el 5 (pues ambos contienen imágenes de perros) y la clasificación de frutas en dos grupos separados (clusters 3 y 4, superpuestos). Por lo tanto, no es posible concluir cuál de las dos particiones resulta tener mejor performance para separar los datos, ya que ambas muestran una performance pobre en distintas categorías. 
+
+\begin{figure}[h]
+
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.3]{tsne kmeds k = 5.png} 
+\captionsetup{justification=centering}
+\caption{k = 5}
+\label{fig:tsne-kmeds-5}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.3]{tsne kmeds k = 8.png}
+\captionsetup{justification=centering}
+\caption{k = 8}
+\label{fig:tsne-8-kmed}
+\end{subfigure}
+\captionsetup{justification=centering}
+\caption{Visualización en bajas dimensiones de \textit{k-medoids}}
+\label{tsne-kmeds}
+\end{figure}
+
+\subsection{Clusterización de imágenes con DBSCAN}
+
+Una última clasificación de imágenes se realizó utilizando el algoritmo DBSCAN, que se basa en la idea de que, para cada punto de un cluster, debe existir una vecindad con un número mínimo de puntos. De lo contrario, se considera un punto de ruido. La diferencia con los algoritmos explorados anteriormente es que no requiere que el usuario defina el número de clusters a priori. En este experimento, se exploraron dos hiperparámetros: el \textit{eps} que corresponde a la máxima distancia entre dos puntos para que sean considerados vecinos, y \textit{min\_samples} que es el el número mínimo de puntos para formar una región densa. 
+
+Las medidas de bondad de clasificación para los cinco mejores experimentos, así como la cantidad de clusters encontrados en cada uno, se resumen en el Cuadro ~\ref{metricas-tabla-dbscan}.
+
+\begin{table}[h] 
+\captionsetup{justification=centering}
+\caption{Métricas de bondad de clasificación - DBSCAN\label{metricas-tabla-dbscan}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCCC}
+\toprule
+\textbf{Experimento} & \textbf{Número de clusters} & \textbf{Coeficiente de silhouette} & \textbf{Índice de Rand ajustado} & \textbf{Índice de Van Dongen}\\
+\midrule 
+1& 4& -0.049 & 0.110 & 0.673\\ 
+2& 5& -0.054 & 0.00 & 0.992\\ 	
+3 & 5& -0.062 & 0.030 & 0.855 \\ 	
+4& 6& -0.064 & 0.032 & 0.843\\ 	
+5 &8& -0.072 & 0.130 & 0.632\\ 	
+\bottomrule
+\end{tabularx}
+\end{table}
+
+En general, observando el coeficiente de silhouette, se puede apreciar que la clasificación no es buena. Los valores negativos y cercanos a cero indican superposición de los clusters, así como asignaciones a grupos erróneas. Una imagen representativa de los resultados obtenidos se muestra en la Figura ~\ref{dbscan}. Como puede apreciarse, la mayoría de los elementos pertenece al cluster -1. Esto es, no han podido ser clasificados por el algoritmo. Esto es un resultado esperable, ya que DBSCAN es un algoritmo cuya performance es pobre con alta dimensionalidad. 
+
+\begin{figure}[h]
+
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.3]{tsne dbscan.png} 
+\captionsetup{justification=centering}
+\caption{Visualización en bajas dimensiones}
+\label{tsne-dbscan}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.44]{matriz_conf_DBSCAN.png}
+\captionsetup{justification=centering}
+\caption{Matriz de confusión}
+\label{fig:conf-dbscan}
+\end{subfigure}
+\captionsetup{justification=centering}
+\caption{Resultados de Experimento 1 con DBSCAN (ver Cuadro ~\ref{metricas-tabla-dbscan})}
+\label{dbscan}
+\end{figure}
+\vspace{3pt}
+
+Para comprobar si la performance mejora en dimensiones menores, se volvió a aplicar DBSCAN al dataset, previa reducción de la dimensionalidad con PCA. Se conservaron las primeras 200 componentes, que explican un 80\% de la varianza. Los resultados de los cinco mejores experimentos se muestran en el Cuadro ~\ref{metricas-tabla-dbscan-pca}.
+
+\begin{table}[h] 
+\captionsetup{justification=centering}
+\caption{Métricas de bondad de clasificación - DBSCAN + PCA\label{metricas-tabla-dbscan-pca}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCCC}
+\toprule
+\textbf{Experimento} & \textbf{Número de clusters} & \textbf{Coeficiente de silhouette} & \textbf{Índice de Rand ajustado} & \textbf{Índice de Van Dongen}\\
+\midrule 
+1& 6& 0.107 & 0.084 & 0.759\\ 
+2& 8& -0.031 & 0.206 & 0.515\\ 	
+3 & 5& -0.061 & 0.000 & 0.992 \\ 	
+4& 6& -0.105 & 0.055 & 0.780\\ 	
+5 &3 & -0.106 & 0.000 & 0.999\\ 	
+\bottomrule
+\end{tabularx}
+\end{table}
+
+De acuerdo a los resultados, la técnica mejora levemente al considerar menos dimensiones. Para los experimentos 1 y 2, que podrían considerarse los más exitosos, se obtienen valores de clusters similares a los evaluados en los experimentos de \textit{k-means} y \textit{k-medoids}. Los resultados se pueden visualizar en la Figura ~\ref{dbscan-pca}.
+
+\begin{figure}[h]
+
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.3]{tsne dbscan PCA exp 1.png} 
+\captionsetup{justification=centering}
+\caption{Experimento 1}
+\label{tsne-dbscan-pca-1}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\includegraphics[scale = 0.3]{tsne dbscan PCA exp 2.png}
+\captionsetup{justification=centering}
+\caption{Experimento 2}
+\label{tsne-dbscan-pca-2}
+\end{subfigure}
+\captionsetup{justification=centering}
+\caption{Visualización en bajas dimensiones de DBSCAN + PCA (ver Cuadro ~\ref{metricas-tabla-dbscan-pca})}
+\label{dbscan-pca}
+\end{figure}
+
+De todas maneras, si bien la clusterización es levemente mejor que para el experimento con DBSCAN (Figura ~\ref{tsne-dbscan}), los resultados siguen siendo desalentadores, considerando la cantidad de puntos que no pudieron ser asignados a ninguna aglomeración. 
+
+\subsection{Detección de objetos dentro de una imagen}
+
+\subsubsection{\textit{Connected-component labelling}}
+
+El algoritmo \textit{connected-component labelling} permite identificar aquellos pixels que están conectados entre sí. De esa forma, tiene la posibilidad de detectar patrones que correspondan a objetos dentro de una imagen. Para su utilización, el algoritmo requiere previamente la binarización de la imagen; es decir, transformar cada uno de sus píxeles en blanco o negro, dependiendo de si su valor se encuentra por encima o por debajo de un umbral establecido. En el presente trabajo, para la imagen elegida, se invirtió la binarización (es decir, se asignó blanco a pixel<=threshold) y se iteró sobre distintos valores de threshold (50, 60, 65, 70, 75, 80, 85, 90, 100, 127) hasta encontrar el que visualmente presentara la mejor segmentación.
+
+En la Figura~\ref{connected_component_labelling} se muestra el mejor resultado encontrado, el cual corresponde a un threshold = 75. Sin embargo, para umbrales entre 60 y 80 se logra también una correcta identificación de la silueta de la moto. Mientras que con valores menores a 60, no se logran identificar los espejos y con intensidad mayores a 80 comienza a mezclarse con el fondo.
+
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{connected_component_labelling motorbike_75.png}
+\captionsetup{justification=centering}
+\caption{De izquiera a derecha: Imagen original, binarización con umbral seleccionado e imagen con los componentes reconocidos. \label{connected_component_labelling}}
+\end{figure}   
+\skip
+
+En definitiva, el algoritmo permitió identificar satisfactoriamente la motocicleta, diferenciándola del resto de la fotografía.
+
+\subsubsection{Clustering espectral}
+
+Para la implementación de este algoritmo se utilizaron las librerías \textit{spectral\_clustering} de \textit{sklearn.cluster} y \textit{image} de \textit{sklearn.feature\_extraction}. Con la primera de ellas se implementa la clusterización propiamente dicha, mientras que con la segunda se convierte la imagen a analizar en un grafo. A continuación se describe la metodología utilizada:
+\begin{enumerate}[leftmargin=2cm]
+    \item Se carga la imagen RGB (posee tres canales).
+    \item Se convierte a escala de grises (un solo canal)
+    \item Se re-escala la imagen (usando \textit{rescale} de \textit{skimage.transform)}. Este paso puede ser o no necesario, dependiendo de lo costoso computacionalmente que sean los procesos posteriores.
+    \item Se convierte la imagen en un grafo.
+    \item Se corre el algoritmo \textit{spectral\_clustering} sobre el grafo.\end{enumerate}
+
+Se ejecutó varias veces la conversión de la imagen a grafo (probando distintas transformaciones) y se probaron
+diferentes hiperparámetros de \textit{spectral\_clustering}, particularmente se recorrieron distintos valores de \textit{n\_clusters\textnormal{,} 
+ assign\_labels \textnormal{y} eigen\_solver}.
+
+Uno de los mejores resultados obtenidos (Figura~\ref{spectral_clustering}) se obtuvo con \textit{n\_clusters}=15,  \textit{eigen\_tol}=1e-7 \textnormal{y} \textit{eigen\_solver}='arpack'. Con respecto al hiperparámetro  \textit{assign\_labels} no se aprecian grandes diferencias, sin embargo con \textit{discretize} la rueda delantera esta perfectamente identificada.
+
+\begin{figure}[H]
+\includegraphics[width=1\textwidth]{fig3_recortada(spectral clustering).png}
+\captionsetup{justification=centering}
+\caption{\textit{Spectral\_clustering} con diferentes \textit{assign\_labels} \label{spectral_clustering}}
+\end{figure}   
+\skip
+
+\subsubsection{Comparación \textit{spectral\_clustering} vs \textit{connected component labelling}.}
+
+A la luz de la aplicación de ambos algoritmos en la imagen de ejemplo, podemos identificar que ambos son útiles para la detección de objetos, aunque para aplicaciones diferentes: mientras que \textit{component-labelling} es útil para diferenciar al objeto principal (la motocicleta) del resto de la imagen, spectral clustering puede detectar subconjuntos del objeto principal (en el caso de discretize, la rueda delantera).
+
+\section{Conclusiones}
+Como primer idea, se destaca la potencia del algoritmo VGG16. Con distintas performance, la mayoría de los algoritmos no supervisados tomaron los atributos generados por la red neuronal y lograron diferenciarlos.
+
+Profundizando en los tres algoritmos de clustering, DBSCAN se destacó por su muy baja performance en comparación con los otros dos. Adicionalmente, el algoritmo PAM se destacó con respecto a Kmeans, puesto que logró diferenciar las imágenes de perros, flores y personas (agrupados en un solo cluster por Kmeans).
+
+Finalmente, ambos algoritmos de detección de objetos resultaron set útiles: connected component labelling para la detección de un objeto con respecto a su fondo, y spectral clustering para la detección de partes específicas de un objeto. En ambos casos, se pudo constatar la importancia de un adecuado pretratamiento de la imagen para obtener resultados fiables.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+
+% Please provide either the correct journal abbreviation (e.g. according to the “List of Title Word Abbreviations” http://www.issn.org/services/online-services/access-to-the-ltwa/) or the full name of the journal.
+% Citations and References in Supplementary files are permitted provided that they also appear in the reference list here. 
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+%\bibliography{your_external_BibTeX_file}
+
+%=====================================
+% References, variant B: internal bibliography
+%=====================================
+\begin{thebibliography}{999}
+
+\bibitem[Author1(year)]{ref-rev1}
+Rawat, W., \& Wang, Z. (2017). Deep Convolutional Neural Networks for Image Classification: A Comprehensive Review. \textit{Neural Computation}, 29(9), 2352–2449. doi:10.1162/neco\_a\_00990 
+
+\bibitem[Author1(year)]{ref-rev2}
+Chen L, Li S, Bai Q, Yang J, Jiang S, Miao Y. Review of Image Classification Algorithms Based on Convolutional Neural Networks. \textit{Remote Sensing}. 2021; 13(22):4712. https://doi.org/10.3390/rs13224712
+
+\bibitem[Author1(year)]{ref-kaggle}
+Roy, Prasun and Ghosh, Subhankar and Bhattacharya, Saumik and Pal, Umapada. Effects of Degradations on Deep Neural Network Architectures. arXiv preprint arXiv:1807.10108, 2018. Disponible en \href{https://www.kaggle.com/datasets/prasunroy/natural-images}{https://www.kaggle.com/datasets/prasunroy/natural-images}
+
+
+\bibitem[Author2(year)]{ref-cancer}
+D. Albashish, R. Al-Sayyed, A. Abdullah, M. H. Ryalat and N. Ahmad Almansour, "Deep CNN Model based on VGG16 for Breast Cancer Classification," 2021 \textit{International Conference on Information Technology (ICIT)}, Amman, Jordan, 2021, pp. 805-810, doi: 10.1109/ICIT52682.2021.9491631.
+
+\bibitem[Author3(year)]{ref-retino}
+da Rocha, D.A., Ferreira, F.M.F. \& Peixoto, Z.M.A. Diabetic retinopathy classification using VGG16 neural network. \textit{Res. Biomed. Eng.} 38, 761–772 (2022). https://doi.org/10.1007/s42600-022-00200-8
+
+\bibitem[Author3(year)]{ref-pulmones}
+Zhao D, Zhu D, Lu J, Luo Y, Zhang G. Synthetic Medical Images Using F\&BGAN for Improved Lung Nodules Classification by Multi-Scale VGG16. \textit{Symmetry}. 2018; 10(10):519. https://doi.org/10.3390/sym10100519
+
+\bibitem[Author3(year)]{ref-berenjenas}
+Krishnaswamy Rangarajan, A., Purushothaman, R. Disease Classification in Eggplant Using Pre-trained VGG16 and MSVM. \textit{Sci Rep} 10, 2322 (2020). https://doi.org/10.1038/s41598-020-59108-x
+
+\bibitem[Author3(year)]{ref-tabaco}
+D. I. Swasono, H. Tjandrasa and C. Fathicah, "Classification of Tobacco Leaf Pests Using VGG16 Transfer Learning," 2019 \textit{12th International Conference on Information & Communication Technology and System (ICTS)}, Surabaya, Indonesia, 2019, pp. 176-181, doi: 10.1109/ICTS.2019.8850946.
+
+\bibitem[Author3(year)]{ref-peces}
+Hridayami, P., et al. Fish Species Recognition Using VGG16 Deep Convolutional Neural Network. \textit{Journal of Computing Science and Engineering}, 2019, 13(3), 124-130. http://dx.doi.org/10.5626/JCSE.2019.13.3.124
+
+\end{thebibliography}
+\end{adjustwidth}
+
+\end{document}
+
