@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\usepackage{template}
+
+
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{graphicx}
+\usepackage{float}
+
+\graphicspath{ {imagenes/} }
+
+\title{Pre TP2: Data Mining en Ciencia y Tecnología}
+
+\author{%
+  José Saint Germain\\
+  \texttt{josesg998@gmail.com} \\
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+
+El objetivo de este trabajo es familiarizarse con la generación de grafos
+que representen un conjunto de datos. A su vez, se buscará visualizar,
+manipular y comparar distintos tipos de grafos. Por último, se calculará
+parámetros básicos de un grafo y se los comparará con modelos de redes
+aleatorios (random), small world y libre de escala (scale-free).
+
+\section{Métodos}
+Nuestra fuente de trabajo es una base de datos de 18 sujetos en
+4 estadíos del sueño (despierto + 3 estadíos del sueño). A su vez, para cada 
+sujeto y estadío de sueño se utilizó una matriz de correlaciones de tamaño 
+116x116 con correlaciones entre entre las señales BOLD de 116 reciones
+cerebrales. En este artículo se trabajará con la matriz del sujeto número 12
+en estado despierto (w).
+
+
+Para procesar y visualizar los datos se utilizó el lenguaje de programación
+Python, del cual usamos las siguientes librerías: Numpy, para procesamiento 
+de matrices; Pandas, para generación y procesamiento de datos tabulares; 
+Matplotlib y seaborn, para visualización de datos y Networkx, para generación 
+y manipulación de grafos.
+
+\section{Resultados y discusión}
+
+De manera exploratoria, se visualizó la matriz de correlaciones del sujeto 12
+en estado despierto de manera pesada y binarizada.
+
+\begin{figure}[H]
+  \centering  
+  \includegraphics[width=1\textwidth]{1_Sujeto2W.png}
+  \caption{Matrices de correlación del cerebro del sujeto 2 despierto}
+\end{figure}
+
+La imagen de la izquierda muestra la matriz pesada, mientras que la de la 
+derecha muestra la matriz binarizada con un umbral de 0.08. De esa manera,
+las correlaciones menores a ese umbral se muestra como negros y los mayores
+como blancos. De esta manera, se puede observar con claridad las correlaciones
+con valores bajos de toda la matriz.
+
+Para continuar con el análisis, transformarmos esta matriz en un grafo. El
+grafo resultante es una totalmente conectado, es decir que 
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{lr}
+      \toprule
+      Métrica & Valor \\
+      \midrule
+      Distancia media & 1.209295 \\
+      Grado promedio (K) & 11.500000 \\
+      Nodo con grado máximo (kmax) & 36.000000 \\
+      Coeficiente de clustering promedio (C) & 0.556270 \\
+      Eficiencia & 0.296510 \\
+      \bottomrule
+      \end{tabular}
+  \caption{Métricas del grafo G}
+  \label{tab:parametros}
+\end{table}
+
+Subsecuentemente, observaremos el grafo simulando la forma de un cerebro,
+ubicando cada nodo en su ubicación correspondiente. Adicionalmente, agregamos
+un histograma de los grados de cada nodo.
+
+\begin{figure}[H]
+  \centering  
+  \includegraphics[width=1\textwidth]{2_Sujeto2W.png}
+  \caption{Visualización del grafo G}
+\end{figure}
+
+\section{Conclusión}
+
+\section{Bibliografía}
+\end{document}
