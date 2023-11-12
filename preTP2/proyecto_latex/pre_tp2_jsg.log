@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2023.10.29)  5 NOV 2023 01:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2023.10.29)  12 NOV 2023 00:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -496,83 +496,71 @@ Package microtype Info: Loading generic protrusion settings for font family
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.84 
+l.86 
      ]
 <imagenes/1_Sujeto2W.png, id=35, 1300.86pt x 578.16pt>
 File: imagenes/1_Sujeto2W.png Graphic file (type png)
 <use imagenes/1_Sujeto2W.png>
-Package pdftex.def Info: imagenes/1_Sujeto2W.png  used on input line 92.
-(pdftex.def)             Requested size: 397.48499pt x 176.66054pt.
- [2
+Package pdftex.def Info: imagenes/1_Sujeto2W.png  used on input line 95.
+(pdftex.def)             Requested size: 317.9892pt x 141.32843pt.
+
+Overfull \hbox (3.84581pt too wide) in paragraph at lines 141--151
+ [][] 
+ []
+
+[2
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.138 
+l.159 
       
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.138 
-       <./imagenes/1_Sujeto2W.png>]
-<imagenes/2_Sujeto2W.png, id=46, 578.16pt x 433.62pt>
-File: imagenes/2_Sujeto2W.png Graphic file (type png)
-<use imagenes/2_Sujeto2W.png>
-Package pdftex.def Info: imagenes/2_Sujeto2W.png  used on input line 161.
-(pdftex.def)             Requested size: 198.7425pt x 149.0565pt.
-<imagenes/3_Sujeto2W.png, id=47, 578.16pt x 433.62pt>
-File: imagenes/3_Sujeto2W.png Graphic file (type png)
-<use imagenes/3_Sujeto2W.png>
-Package pdftex.def Info: imagenes/3_Sujeto2W.png  used on input line 169.
-(pdftex.def)             Requested size: 198.7425pt x 149.0565pt.
- [3
+l.159 
+      
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.182 
-      
+l.159 
+       <./imagenes/1_Sujeto2W.png>]
+<imagenes/grafo_hist.png, id=47, 1300.86pt x 433.62pt>
+File: imagenes/grafo_hist.png Graphic file (type png)
+<use imagenes/grafo_hist.png>
+Package pdftex.def Info: imagenes/grafo_hist.png  used on input line 163.
+(pdftex.def)             Requested size: 357.73405pt x 119.24255pt.
+<imagenes/4_Sujeto2W.png, id=48, 1445.4pt x 505.89pt>
+File: imagenes/4_Sujeto2W.png Graphic file (type png)
+<use imagenes/4_Sujeto2W.png>
+Package pdftex.def Info: imagenes/4_Sujeto2W.png  used on input line 202.
+(pdftex.def)             Requested size: 278.23827pt x 97.37833pt.
+ [3
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.182 
+l.215 
       
-pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.182 
-       <./imagenes/2_Sujeto2W.png> <./imagenes/3_Sujeto2W.png>]
-Overfull \hbox (34.94283pt too wide) in paragraph at lines 185--194
-[][] 
- []
-
-<imagenes/4_Sujeto2W.png, id=57, 1445.4pt x 505.89pt>
-File: imagenes/4_Sujeto2W.png Graphic file (type png)
-<use imagenes/4_Sujeto2W.png>
-Package pdftex.def Info: imagenes/4_Sujeto2W.png  used on input line 200.
-(pdftex.def)             Requested size: 397.48499pt x 139.11632pt.
-<imagenes/5_Sujeto2W.png, id=58, 2890.8pt x 2890.8pt>
-File: imagenes/5_Sujeto2W.png Graphic file (type png)
-<use imagenes/5_Sujeto2W.png>
-Package pdftex.def Info: imagenes/5_Sujeto2W.png  used on input line 212.
-(pdftex.def)             Requested size: 397.48499pt x 397.4752pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4
 pdfTeX warning (ext4): destination with the same identifier (name{table.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.215 
       
-pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
 l.215 
-       <./imagenes/4_Sujeto2W.png>] [5
-pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
+       <./imagenes/grafo_hist.png> <./imagenes/4_Sujeto2W.png>]
+<imagenes/5_Sujeto2W.png, id=58, 2890.8pt x 2890.8pt>
+File: imagenes/5_Sujeto2W.png Graphic file (type png)
+<use imagenes/5_Sujeto2W.png>
+Package pdftex.def Info: imagenes/5_Sujeto2W.png  used on input line 218.
+(pdftex.def)             Requested size: 397.48499pt x 397.4752pt.
+ [4
+pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.219 \end{document}
-                     <./imagenes/5_Sujeto2W.png>] (pre_tp2_jsg.aux
+l.240 
+       <./imagenes/5_Sujeto2W.png>] [5] (pre_tp2_jsg.aux
 LaTeX Info: Redefining \. on input line 22.
 LaTeX Info: Redefining \% on input line 22.
 )
@@ -584,17 +572,17 @@ Package rerunfilecheck Info: File `pre_tp2_jsg.out' has not changed.
 (rerunfilecheck)             Checksum: 1722C531FEAD0D8C2C89989F1EB35744;715.
  ) 
 Here is how much of TeX's memory you used:
- 14255 strings out of 475248
- 229546 string characters out of 5757812
- 1932785 words of memory out of 5000000
- 35438 multiletter control sequences out of 15000+600000
- 589319 words of font info for 133 fonts, out of 8000000 for 9000
+ 14277 strings out of 475248
+ 229604 string characters out of 5757812
+ 1933785 words of memory out of 5000000
+ 35431 multiletter control sequences out of 15000+600000
+ 590619 words of font info for 153 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,8n,79p,1147b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,10n,79p,1147b,481s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\joses\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ectt1000.pk><C:/Users/joses/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/joses/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/joses/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/joses/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/joses/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/joses/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pre_tp2_jsg.pdf (5 pages, 1154214 bytes).
+Output written on pre_tp2_jsg.pdf (5 pages, 1069278 bytes).
 PDF statistics:
- 122 PDF objects out of 1000 (max. 8388607)
- 20 named destinations out of 1000 (max. 500000)
- 34882 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 119 PDF objects out of 1000 (max. 8388607)
+ 19 named destinations out of 1000 (max. 500000)
+ 34877 words of extra memory for PDF output out of 35830 (max. 10000000)
 
