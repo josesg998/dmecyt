@@ -1,0 +1,311 @@
+\documentclass[a4paper,10pt,twocolumn,spanish]{article}
+%---------------------------------------------------------
+\usepackage{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{soul}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{array}
+\graphicspath{ {imagenes/} }
+\usepackage{multirow}
+\usepackage{color,soul}
+
+%---------------------------------------------------------
+\title{Redes cerebrales}
+
+\author{
+    Florencia Boemo, 
+    José Saint Germain,
+    Leopoldo Serpa\\
+	\footnotesize Data mining en ciencia y tecnología, Especialización en Explotación de Datos y Descubrimiento del Conocimiento\\  
+ \footnotesize FCEN-UBA
+}
+
+\date{\empty} % no need for a date
+
+\begin{document}
+\maketitle
+%---------------------------------------------------------
+\begin{abstract} 
+En el presente trabajo, se estudió la presencia de redes en el cerebro en los distintos estadios de sueño no REM, a partir de resultados obtenidos por resonancia magnética funcional. Se caracterizaron dichas redes, utilizando conceptos de teoría de grafos. Se detectaron diferencias en los distintos estadios, particularmente en lo que respecta a tamaño de la componente gigante y centralidad de autovector de los nodos.
+
+Por otra parte, se estudió la presencia de comunidades en cada estadio, utilizando como parámetro inicial de comparación una red de topología aleatoria. Las redes cerebrales presentes fueron estadísticamente distintas respecto de la red al azar (incluso teniendo en cuenta comparaciones múltiples) pero no se detectaron diferencias significativas entre los estados de sueño. Las comunidades halladas fueron similares, tanto para el algoritmo de Louvain como para el de Girvan-Newman.
+
+Finalmente, se analizó si las comunidades presentes en los distintos estadios de sueño no REM eran significativamente diferentes de las halladas durante la vigilia. Se encontraron diferencias significativas en todos los estadios, aunque la reorganización de la red se dio en mayor magnitud en el estadio N2. Con respecto al rol de los nodos, no se detectaron grandes cambios entre los distintos estados de sueño, aunque esto se atribuyó al tratamiento de los datos realizado.
+
+\end{abstract}
+%---------------------------------------------------------
+\section{Introducción}
+
+El cerebro humano es una red compleja de interacciones neuronales, que facilita el procesamiento y la integración de la información. La arquitectura de esta red puede estudiarse utilizando elementos de la teoría de grafos, en la que las regiones cerebrales están compuestas por nodos y la materia  blanca que las conecta por enlaces. Una característica de particular interés en esta red es la estructura de comunidades que presenta, con altos niveles de conectividad entre miembros del mismo grupo y baja conectividad entre los grupos. La formación de comunidades cerebrales podría ser un atributo importante para la especialización y segregación del procesamiento de información \cite{ref1}.
+
+El análisis de redes de datos de resonancia magnética funcional (fMRI) ha contribuido al entendimiento de esta red. Un hallazgo fundamental fue que, en reposo, las regiones del cerebro pueden agruparse en un número relativamente pequeño de comunidades estables \cite{ref2}. La relación entre medidas de modularidad y el nivel de vigilancia durante el sueño es un tema que debe ser estudiado, sin embargo, sí se conoce que, durante el sueño no REM, la segregación de las comunidades aumenta \cite{ref3}.
+
+En el presente trabajo, se seguirán los pasos de Tagliazucchi et al \cite{ref3}, estudiando las redes cerebrales en todas las etapas de sueño no REM mediante elementos de la teoría de grafos. En primer lugar, se realizará una caracterización de la red, para luego analizar los cambios de modularidad en las distintas etapas de sueño. Finalmente, para los diferentes estadios, se analizarán las diferencias entre las comunidades encontradas durante las fases, para estudiar si son significativamente distintas de las observadas en estado de vigilia, así como posibles cambios en el rol que ocupan ciertos nodos \cite{ref4}.
+
+%---------------------------------------------------------
+\section{Materiales y métodos}
+
+En el presente trabajo, se buscará ganar comprensión acerca del funcionamiento del cerebro durante las etapas de sueño no REM. Para ello, en base a las investigaciones realizadas por Tagliazucchi et al, se abordará el problema utilizando herramientas de grafos. 
+
+Para realizar el estudio, se utilizarán datos de 18 sujetos, cuya actividad cerebral fue medida durante todas las etapas de sueño no REM, en 116 regiones del cerebro. En primer lugar, se analizarán los datos utilizando herramientas de grafos, mediante la librería de Python \textit{NetworkX}. Se calcularán parámetros característicos de las redes. Luego, se realizarán estudios de comunidades, considerando las definiciones de Louvain. Se compararán los estados de sueño individuales contra una red de topología random, y también entre sí. Asimismo, para una mejor comprensión del fenómeno, se contrastarán los resultados obtenidos contra los arrojados por el algoritmo de Girvan-Newman para un caso particular.
+
+Finalmente, se estudiará si las comunidades halladas en el estado de vigilia son significativamente distintas de las encontradas durante el sueño no REM. Dicha comparación se realizará observando el índice de Rand ajustado para los estados puros versus una permutación de estados, siguiendo el método propuesto por Alexander-Bloch. Asimismo, se analizará el cambio en el rol de los nodos dentro de las redes cerebrales en cada etapa del sueño, teniendo en cuenta variaciones en la participación intra e intercomunidad.
+
+%---------------------------------------------------------
+\section{Resultados y discusión}
+
+\subsection{Visualización y caracterización de redes cerebrales}
+
+Se descargaron los datos de resonancia magnética funcional para cada uno de los sujetos participantes, en cada estadío de sueño. En total, se tienen cuatro estadios distintos: vigilia, sueño N1, sueño N2 y sueño N3. Las resonancias magnéticas funcionales recolectaron datos de 116 regiones cerebrales, dando como resultado matrices de correlación de 116 x 116. Las matrices se promediaron para cada estadio, y se muestran en la Figura \ref{fig:matriz_prom}.  Es importante destacar que los elementos en la diagonal (representada por una línea más oscura en la Figura \ref{fig:matriz_prom}) se forzaron a cero, para evitar la formación de autoenlaces. Se puede apreciar como, en el estadio W, la correlación entre regiones es en general más alta.
+
+%---------------
+\begin{figure*}[hbt]
+\centering
+\includegraphics[width=1\textwidth]{matriz_promedio.png}
+\caption{Matrices de correlación promedio para cada estadio cerebral}
+\label{fig:matriz_prom}
+\end{figure*}
+%---------------
+
+Las matrices de la Figura \ref{fig:matriz_prom} corresponden a un grafo pesado. Posteriormente, se binarizaron estableciendo un umbral móvil de densidad entre 0 y 0,15. Dicho umbral se incrementó gradualmente y se analizó la variación en el tamaño de la componente gigante del grafo. Los resultados se muestran en la Figura \ref{fig:comp_gigante}.
+
+%---------------
+\begin{figure}[htb]
+\centering
+\includegraphics[width=0.9\linewidth]{grafo_binarizado.png}
+\caption{Porcentaje de nodos conectados para cada densidad de enlace}
+\label{fig:comp_gigante}
+\end{figure}
+%---------------
+
+Observando la Figura \ref{fig:comp_gigante}, se puede apreciar que, a una densidad de enlaces baja, la componente gigante del estado W es mayor. Por otra parte, los grafos correspondientes a los estados N2 y N3 alcanzan rápidamente su tamaño máximo, mientras que los restantes llegan al 100\% de nodos involucrados en la componente gigante a densidades de enlace mayores. Las curvas obtenidas son relativamente suaves, sin saltos bruscos, para todos los estadios a excepción de N2, donde se detecta una meseta con aproximadamente el 70\% de los nodos conectados (densidad de enlaces aproximada 0.04). Este brusco incremento en el porcentaje de nodos podría deberse a que las nuevas conexiones se generarían en bloque, uniendo dos comunidades que hasta entonces estaban inconexas.
+
+A continuación, se estudió el quiebre brusco en la curva de N2 (Figura \ref{fig:comp_gigante}) mencionado anteriormente, para valores de densidad de enlaces entre 0.03 y 0.05. Para ello, se graficaron los enlaces presentes en coordenadas cerebrales. Dicha representación se muestra en la Figura \ref{fig:salto}.
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{salto_N2.png}
+\caption{Enlaces entre nodos presentes a distintas densidades - Coordenadas cerebrales}
+\label{fig:salto}
+\end{figure*}
+%---------------
+
+En la Figura \ref{fig:salto}, se puede apreciar que el cambio en la derivada en la Figura \ref{fig:comp_gigante} para el estado N2 se debe claramente a la formación de nuevos enlaces, particularmente en las zonas frontal, parietal y occipital. La cantidad de enlaces en la zona temporal también aumenta, pero están más conservados a densidades menores. Es interesante destacar que el aumento de conexiones en la zona del cerebelo se da de manera modular, ya que primero los nodos de la zona cerebelar se conectan entre sí (densidad de enlaces 0.04) y luego se unen a la componente gigante (densidad 0.05).
+
+Luego, se analizó el comportamiento del grado medio, el coeficiente de clustering y la eficiencia global en función de la densidad de enlaces (Figura \ref{fig:metricas}), para cada estado de sueño. Se puede apreciar que el comportamiento del grado medio en función de la densidad es lineal e independiente del estado. Este fenómeno no se observa en las otras métricas estudiadas. Por otra parte, se puede observar cómo la dependencia de la eficiencia global con la densidad reproduce aproximadamente el comportamiento de la componente gigante observado en la Figura \ref{fig:comp_gigante}, particularmente el quiebre observado alrededor de 0.04 para el estado N2. Esto tiene sentido, ya que la eficiencia es de alguna manera una medida de distancia. Al agregar nodos ordenadamente a la componente gigante, la eficiencia refleja los cambios de tamaño de la misma. 
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{metricas.png}
+\caption{Caracterización del grafo - Dependencia con densidad de enlaces}
+\label{fig:metricas}
+\end{figure*}
+%---------------
+
+En cuanto al coeficiente de clustering medio, las curvas para los distintos estadios son similares, siendo levemente menor el clustering medio en el estado W. Esto es, en el estadio W los vecinos están menos unidos entre sí que en las otras condiciones estudiadas. Esto podría advertir de la presencia de una estructura más extendida, global, en la que las microcomunidades no juegan un rol importante. Asimismo, en este estado la eficiencia global es menor, lo que implica que, en general, los nodos que están conectados son más distantes entre sí. Esto también hace pensar que las comunidades cerradas no son tan relevantes en este estadío.
+
+Finalmente, se analizó la importancia de los nodos, de acuerdo a su centralidad de autovector, para cada estadio de sueño, a una densidad de enlaces fija (0.12, en este caso). Los resultados se exhiben en la Figura \ref{fig:autovector}. 
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{centralidad_autovector.png}
+\caption{Caracterización del grafo - Importancia de nodos según centralidad de autovector}
+\label{fig:autovector}
+\end{figure*}
+%---------------
+
+La centralidad de autovector implica que los nodos son importantes cuando están a su vez conectados a nodos importantes. Se detectaron cambios en la relevancia de los nodos al progresar en las distintas etapas. En el estado de vigilia, los nodos con mayor centralidad se ubican en los lóbulos temporal y occipital. Al entrar en la etapa de sueño N1, se verifica mayor centralidad en los lóbulos parietal y frontal. Los nodos de la zona occipital siguen teniendo centralidad de autovector importante durante N1 respecto del estado de vigilia. En cuanto a la etapa N2, se detecta actividad en casi todas las zonas estudiadas, aunque puede observarse leve disminución de la centralidad en el lóbulo temporal. Finalmente, en la etapa N3 la zona occipital pierde centralidad, trasladándose la actividad hacia los lóbulos frontales y parietales. Es importante destacar que los nodos ubicados en el cerebelo no tienen gran centralidad en ninguno de los estadios considerados.
+
+\subsection{Estudio de comunidades} \label{comunidades}
+
+En este apartado, se estudió la presencia de comunidades en las redes cerebrales consideradas, utilizando el algoritmo de Louvain. Para ello, se partió de las matrices promedio mostradas en la Figura \ref{fig:matriz_prom}. Para cada estado, se calculó la modularidad en función de la densidad de enlaces, y se la comparó contra redes random equivalentes. La significancia estadística de la comparación se determinó con un test de Mann-Whitney. Los resultados obtenidos se exhiben en la Figura \ref{fig:modularidad}. El área sombreada alrededor de la curva es el intervalo de confianza al 95\%.
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{modularidad_vs_densidad.png}
+\caption{Dependencia de modularidad con densidad de enlaces}
+\label{fig:modularidad}
+\end{figure*}
+%---------------
+
+A simple vista, es posible afirmar que, en todos los estadios, el comportamiento de la modularidad del cerebro es marcadamente distinto del de una red random equivalente. La presencia de comunidades es más importante a medida que disminuye la densidad de enlaces. Esto se evidencia en valores de modularidad mayores. Este análisis se repitió considerando el número de comunidades, y se muestra en la Figura \ref{fig:comunidad}.
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{comunidad_vs_densidad.png}
+\caption{Número de comunidades detectadas versus densidad de enlaces}
+\label{fig:comunidad}
+\end{figure*}
+%---------------
+
+Observando las curvas de la Figura \ref{fig:comunidad}, se puede apreciar que las curvas real y random tienden a converger para densidades de enlace altas. Esto es, al aumentar la cantidad de enlaces, el número de comunidades detectadas disminuye en todos los casos. Esto está de acuerdo con lo afirmado al analizar la Figura \ref{fig:modularidad}. Esto podría deberse a que, al aumentar la cantidad de enlaces, las comunidades existentes, que antes se conectaban por pocos enlaces a su entorno, se unen a la componente gigante a través de nuevos puntos de contacto, aproximándose así a la topología de una red random. Se puede apreciar también que, al aumentar la densidad de enlaces, las diferencias entre las curvas obtenidas experimentalmente y las de una red random no tienen significancia estadística.
+
+Para un mejor análisis de las diferencias entre estados, se realizó una comparación de a pares entre el estado W y los estados N1, N2 y N3, tanto para la modularidad como para el número de comunidades. Los resultados obtenidos se muestran en las Figuras \ref{fig:comp_modularidad_estados} y \ref{fig:comp_comunidad_estados}. La significancia se evaluó con un test de Mann-Whitney. El área sombreada corresponde al intervalo de confianza al 95\%.
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{modularidad_comparacion_estados.png}
+\caption{Modularidad versus densidad de enlaces - Comparación entre estados}
+\label{fig:comp_modularidad_estados}
+\end{figure*}
+%---------------
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{comunidades_comparacion_estados.png}
+\caption{Número de comunidades detectadas versus densidad de enlaces - Comparación entre estados}
+\label{fig:comp_comunidad_estados}
+\end{figure*}
+%---------------
+
+Las diferencias observadas en las curvas de las Figuras \ref{fig:comp_modularidad_estados} y \ref{fig:comp_comunidad_estados} no son estadísticamente significativas. Esto es, la presencia de comunidades en todos los estados es similar. Esto también está de acuerdo con el hecho de que los intervalos de confianza de ambas curvas se solapan significativamente. En este punto, no fue factible reproducir los resultados observados en la bibliografía. Probablemente, se necesite de una muestra de mayor tamaño para conseguir relevancia estadística.
+
+Finalmente, se graficaron en coordenadas cerebrales las comunidades encontradas para los distintos estados, para un valor de densidad de enlaces de 0.08 (Figura \ref{fig:mapa_comunidades}). 
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{mapa_cerebro_comunidades.png}
+\caption{Comunidades presentes - Comparación entre estados (algoritmo de Louvain)}
+\label{fig:mapa_comunidades}
+\end{figure*}
+%---------------
+
+De acuerdo a la Figura \ref{fig:mapa_comunidades}, se puede apreciar cómo, al entrar en estadíos de sueño más profundos, comienzan a detectarse comunidades diferenciadas. En el estado de vigilia, casi todo el cerebro funciona como una unidad. Comparativamente, en el estadio N3, se detectan comunidades que están prácticamente superpuestas a las distintas áreas funcionales del cerebro, especialmente en la región temporal y occipital.
+
+Es interesante destacar que, en todos los estadios, se detectan comunidades aisladas en el cerebelo, lo cual es consistente con la función biológica de este órgano: el cerebelo controla la motricidad fina, el equilibrio y la postura. Por el contrario, el cerebro controla principalmente las funciones cognitivas más elevadas (pensamiento, aprendizaje, resolución de problemas, memoria, habla, lectura, escritura, etc.). Probablemente, al no haber demasiada  superposición a nivel funcional, los nodos no interactúan entre sí de manera significativa.
+
+\subsubsection{Comparación de algoritmos para estudio de comunidades: Louvain vs. Girvan-Newman}
+
+Las comunidades obtenidas dependen del algoritmo empleado. En este apartado, se comparó el resultado obtenido mediante el método de Louvain (Figura \ref{fig:mapa_comunidades}) con el arrojado por el algoritmo de Girvan-Newman, para una densidad de enlaces de 0.08. El resultado se muestra en la Figura \ref{fig:mapa_comunidades_gn}.
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{mapa_cerebro_comunidades_gn.png}
+\caption{Comunidades presentes - Comparación entre estados (algoritmo de Girvan-Newman)}
+\label{fig:mapa_comunidades_gn}
+\end{figure*}
+%---------------
+
+Comparando las Figuras \ref{fig:mapa_comunidades} y \ref{fig:mapa_comunidades_gn}, se pudo apreciar que, a grandes rasgos, las comunidades identificadas son similares, tanto en cantidad como en ubicación en la red. Asimismo, los valores de modularidad obtenidos son similares en ambos casos (ver Cuadro \ref{tab:comunidades_resultados}). Sin embargo, en la resolución de Girvan-Newman se detectan menos nodos espurios, particularmente en la región del cerebelo, para todos los estadios de sueño. Por el contrario, Girvan-Newman no resuelve bien la región parietal en el estadio N3. De todas maneras, esto es un ejemplo aislado. Un mejor entendimiento de qué algoritmo funciona mejor podría conseguirse repitiendo el análisis para todas las densidades de enlace consideradas. En general, Louvain suele tener mejor performance en términos de tiempo, pero la elección de uno u otro algoritmo dependerá de las características de la red estudiada.
+
+%-------------
+\begin{table*}[ht]
+\centering
+\begin{tabular}{@{}ccccc@{}}
+\toprule
+\multirow{2}{*}{\textbf{Estado}} & \multicolumn{2}{c}{\textbf{Louvain}}        & \multicolumn{2}{c}{\textbf{Girvan-Newman}}  \\ \cmidrule(l){2-5} 
+                                 & \textbf{Modularidad} & \textbf{Particiones} & \textbf{Modularidad} & \textbf{Particiones} \\ \midrule
+\textbf{W}                       & 0.36                 & 34                   & 0.25                 & 44                   \\
+\textbf{N1}                      & 0.53                 & 17                   & 0.45                 & 17                   \\
+\textbf{N2}                      & 0.53                 & 11                   & 0.38                 & 12                   \\
+\textbf{N3}                      & 0.61                 & 10                   & 0.57                 & 13                   \\ \bottomrule
+\end{tabular}
+\caption{Algoritmos para detección de comunidades - Resultados}
+\label{tab:comunidades_resultados}
+\end{table*}
+%-----------
+
+\subsubsection{Corrección por comparaciones múltiples}
+
+Las comparaciones estadísticas mostradas en el apartado \ref{comunidades} se realizaron de a pares. Esto es, se compararon los valores de modularidad y cantidad de comunidades entre las curvas, para cada densidad de enlace (ver Figuras \ref{fig:modularidad}, \ref{fig:comunidad}, \ref{fig:comp_modularidad_estados} y \ref{fig:comp_comunidad_estados}). Se utilizó para ello el test estadístico de Mann-Whitney. Bajo la hipótesis nula, la distribución de partida de ambos grupos es la misma. En la hipótesis alternativa, los valores de una de las muestras tienden a exceder los de la otra. 
+
+Se utilizó la información de la Figura \ref{fig:modularidad} para afirmar que la modularidad en todos los estados es estadísticamente distinta de la presente en una red random, con un nivel de confianza de 95\%. Esta es una conclusión válida, pues se detectó significancia estadística para toda densidad de enlace. Por otra parte, siguiendo el mismo razonamiento, las conclusiones extraidas de las Figuras \ref{fig:comp_modularidad_estados} y \ref{fig:comp_comunidad_estados} también son válidas, ya que, en este caso, ninguna diferencia resultó relevante. Sin embargo, bajo una inspección más exhaustiva, no puede afirmarse que el número de comunidades en los distintos estadios del cerebro sea significativamente distinto del de una red random (Figura \ref{fig:comunidad}), dado que no todas las diferencias de a pares resultaron significativas.
+
+De acuerdo al escenario planteado anteriormente, se realizó una corrección por comparaciones múltiples al estudio del número de comunidades en los distintos  estadios versus en una red random. Se utilizó para ello el método de Bonferroni. Los resultados se muestran en la Figura \ref{fig:bonferroni}. Los p-valor considerados en cada caso se resumen en el Cuadro \ref{tab:p-valor_bonferroni}.
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{comunidades_vs_densidad_bonferroni.png}
+\caption{Número de comunidades detectadas versus densidad de enlaces - Comparación entre estados (corrección de  Bonferroni)}
+\label{fig:bonferroni}
+\end{figure*}
+%---------------
+
+%---------------
+\begin{table}[htb]
+\centering
+\begin{tabular*}{\linewidth}{>{\centering\arraybackslash}p{0.65\linewidth}  >{\centering\arraybackslash}p{0.3\linewidth}}
+\toprule
+\textbf{Test}                             & \textbf{p-valor} \\ \midrule
+Mann-Whitney                              & 0.05             \\
+Mann-Whitney con corrección de Bonferroni & 0.003            \\ \bottomrule
+\end{tabular*}
+\caption{Potencia de tests estadísticos}
+\label{tab:p-valor_bonferroni}
+\end{table}
+%---------------
+
+En el Cuadro \ref{tab:p-valor_bonferroni}, se puede apreciar la disminución de la potencia estadística del test en aproximadamente un orden de magnitud. Sin embargo, incluso en este contexto de menor potencia, los resultados son similares a los obtenidos sin corrección. Por lo tanto, se puede afirmar que, salvo para valores particulares de densidad de enlaces, el número de comunidades detectado en el cerebro es significativamente distinto de los observados en una red al azar.
+
+\subsection{Diferencias entre las comunidades para distintos estadios}
+
+En este apartado, se buscó evaluar si las comunidades observadas en las distintas etapas de sueño no REM eran significativamente diferentes respecto de las vistas en el estado de vigilia. Para ello, se siguió el método propuesto por Alexander-Bloch. En primer lugar, se calculó el índice de Rand ajustado \textit{within group}, para cada estado de sueño. Luego, para cada estadio, se comparó el índice de Rand obtenido anteriormente con otro, resultante de permutar sujetos de ese dado estadio con los datos de los sujetos en vigilia. La permutación se realizó 100 veces, para reducir tiempos de cómputo, y se evaluó su significancia con un test de Mann-Whitney. Los resultados se muestran en la Figura \ref{fig:ari_within}. El área sombreada corresponde al intervalo de confianza del 95\%.
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{imagenes/ARI_within_2.png}
+\caption{ARI \textit{within group} versus densidad}
+\label{fig:ari_within}
+\end{figure*}
+%---------------
+
+De acuerdo a la bibliografía, el índice Rand del grupo permutado debería ser menor al del grupo sin cambios. Esta situación se verifica en la Figura \ref{fig:ari_within} para todos los estadios. En base a esto, se pudo concluir que las comunidades halladas en los distintos estadios de sueño son estadísticamente distintas a las halladas durante el estado de vigilia. Los gráficos obtenidos ademas coinciden con los de bibliografía \cite{ref3}. En general, se detecta que la organización de la red es similar entre el estado de vigilia y N1. Por el contrario, las máximas diferencias respecto del cerebro despierto se detectan en el estadio N2.
+
+\subsubsection{Cambios de rol en los nodos}
+
+Finalmente, se analizaron posibles cambios de rol en los nodos. Para ello, se siguió la clasificación propuesta por Tagliazucchi et al \cite{ref3}, catalogando los nodos en \textit{hubs}, \textit{provincial hubs}, \textit{provincial nodes} y \textit{connector nodes}, de acuerdo a su participación en enlaces intra e intercomunitarios. Se utilizó la librería de Python \textit{brainconn}. Los resultados se resumen en la Figura \ref{fig:roles_densidad}. Las áreas sombreadas representan el intervalo de confianza al 95\%. Los valores que estaban justo en los límites se asimilaron al intervalo inferior, esto es, se consideró el "menor" como un "menor o igual".
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{roles_nodos_densidad.png}
+\caption{Roles de nodos}
+\label{fig:roles_densidad}
+\end{figure*}
+%---------------
+
+En esta ocasión, los resultados obtenidos difieren marcadamente de los presentados en la referencia. Probablemente, esto se deba a que se utilizaron las comunidades obtenidas mediante el algoritmo de Louvain, en lugar de Girvan-Newman, y al menor número de sujetos considerados. Este detalle es relevante, ya que durante el análisis se encontraron muchas comunidades con un único nodo miembro. Asimismo, durante los cálculos se tomaron las decisiones metodológicas detalladas anteriormente que pudieron haber impactado en los datos finales. 
+
+No obstante, un análisis de la Figura \ref{fig:roles_densidad} indica que no hay demasiada diferencia entre los estados despierto y dormido en lo que respecta a cantidad de hubs. Lo mismo puede afirmarse para los connector nodes y provincial nodes. Por el contrario, sí se encontraron diferencias significativas en la cantidad de provincial hubs para los estados N2 y N3 respecto del estado de vigilia, aunque a valores de densidad acotados. Esto no es suficiente para afirmar que dicha diferencia exista. De acuerdo al análisis realizado en apartados anteriores, se vio que el estado N1 es el más parecido en configuración al del cerebro despierto, por lo que no sorprende no ver un contraste claro entre ambos. 
+
+Por otra parte, se decidió visualizar por ser representativos tanto el histograma de roles de nodos y los grafos coloreados por su rol para densidad = 0.08 para los 4 estadios. Los resultados se muestran en la Figura \ref{fig:roles}.
+
+%---------------
+\begin{figure*}[htb]
+\centering
+\includegraphics[width=1\textwidth]{imagenes/nodos_rol.jpg}
+\caption{Nodos coloreados de acuerdo a su rol - Coordenadas cerebrales}
+\label{fig:roles}
+\end{figure*}
+%---------------
+
+En la Figura \ref{fig:roles}, las diferencias en la participación de los nodos a nivel de comunidad no son identificables a simple vista. Esto está de acuerdo con lo observado anteriormente, ya que muy pocas de las comparaciones estadísticas resultaron significativas.
+
+%---------------------------------------------------------
+\section{Conclusión}
+En el presente trabajo, se analizaron las redes presentes en el cerebro durante los distintos estadios de sueño. Para ello, se tomaron datos de una investigación publicada y se buscó replicar la metodología utilizada en pequeña escala. De esta manera, se buscó ganar comprensión en temas de grafos con un ejemplo real. 
+
+En primer lugar, se caracterizaron las redes cerebrales propuestas, buscando identificar diferencias entre los estadios en parámetros tales como tamaño de componente gigante, grado medio, coeficiente de clustering medio, etc. Luego, se analizó la modularidad de los distintos estadios, comparandolos entre sí y con un prototipo de red random. Además, se contrastaron los resultados para dos algoritmos de comunidades distintos. Finalmente, se evaluó la diferencia entre las comunidades propuestas durante las etapas de sueño y de vigilia, y posibles cambios de roles de los nodos entre las distintas etapas. 
+
+En general, el trabajo publicado pudo reproducirse de manera satisfactoria, teniendo en cuenta que se partió de una cantidad de datos menor. Se detectaron diferencias estadisticamente significativas en las comunidades en los estados de vigilia  y sueño, tanto en cantidad como en estructura, pero no pudieron observarse fehacientemente cambios en el rol que desempeñaran los nodos en la red.
+%---------------------------------------------------------
+\bibliography{mybib}
+\bibliographystyle{plain}
+
+\end{document}
