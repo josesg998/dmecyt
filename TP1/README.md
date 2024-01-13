@@ -1,0 +1,3 @@
+# Clustering images with Convolutional Neural Networks
+
+In this projecto we processed images with a Convolutional Neural Network called VGG16, keeping the features obtained from the layer before the last one. Then we used different clustering algorithms (K-means, K-medoids, DBSCAN) to cluster the images based on the features obtained and compared the results with Van-Dongen and Rand Index. Finally we applied some algorithms used for object detection in images.
